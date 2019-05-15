@@ -14,9 +14,15 @@ app.use(bodyParser.json({
     type: ' application/vnd.api+json'
 }));
 
+mongoose.connect('mongodb://localhost/checkin', {
+    useNewUrlParser: true
+});
+
+var db = mongoose.connection;
+
 var port = process.env.PORT || 8080;
 
-app.use('/api/checkin', apiRoutes)
+app.use('/', apiRoutes)
 app.use(function (err, req, res, next) {
     var error = {
         message: err.message,

@@ -1,8 +1,11 @@
 let router = require('express').Router();
 let express = require('express');
 let flight = require('../models/flight.model');
+let passenger = require('../models/passenger.model');
+let checkin = require('../models/checkin.model');
 // const mongodb = require('../config/mongo.db')
 
+var checkInController = require('../controllers/checkinController');
 
 router.get('/', function(req, res) {
     res.json({
@@ -20,5 +23,9 @@ router.get('/', function(req, res) {
 //     })
 //     .catch((error) => res.status(400).json(error));
 // });
+
+router.route('/checkin')
+    .get(checkInController.index)
+    .post(checkInController.new);
 
 module.exports = router;
