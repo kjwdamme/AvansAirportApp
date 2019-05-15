@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FlightManagement.Models
+namespace FlightManagement.Entities
 {
-    public class PlaneModel
+    public class Plane
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
+        [MaxLength(255)]
         public string Name { get; set; }
+        [Required]
         public int MaxBaggageWeight { get; set; }
+        [Required]
         public int MaxPassengers { get; set; }
-        public int Amount { get; set; }
+
+        public ICollection<AirlinePlane> AirlinePlanes { get; set; }
     }
 }
