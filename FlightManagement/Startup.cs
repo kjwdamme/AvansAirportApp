@@ -35,6 +35,7 @@ namespace FlightManagement
                 (options => options.UseSqlServer(connection));
 
             services.AddTransient<AirlineRepository>();
+            services.AddTransient<FlightRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
