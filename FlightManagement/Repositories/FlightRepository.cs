@@ -9,12 +9,12 @@ namespace FlightManagement.Repositories
 {
     public class FlightRepository
     {
-        public FlightRepository(FlightContext entitites)
+        public FlightRepository(FlightWriteContext entitites)
         {
             this.Entities = entitites;
         }
 
-        public FlightContext Entities { get; set; }
+        public FlightWriteContext Entities { get; set; }
 
         public FlightModel AddFlight(int airlineId, FlightModel flightModel)
         {

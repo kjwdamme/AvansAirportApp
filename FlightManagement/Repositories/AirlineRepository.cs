@@ -9,12 +9,12 @@ namespace FlightManagement.Repositories
 {
     public class AirlineRepository
     {
-        public AirlineRepository(FlightContext entities)
+        public AirlineRepository(FlightWriteContext entities)
         {
             this.Entities = entities;
         }
 
-        public FlightContext Entities { get; }
+        public FlightWriteContext Entities { get; }
 
         public AirlineModel AddAirline(AirlineModel airline)
         {

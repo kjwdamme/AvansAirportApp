@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FlightManagement.Entities
 {
-    public class FlightContext : DbContext
+    public class FlightWriteContext : DbContext
     {
-        public FlightContext(DbContextOptions<FlightContext> options) : base(options)
+        public FlightWriteContext(DbContextOptions<FlightWriteContext> options) : base(options)
         { }
 
         public DbSet<Airline> Airlines { get; set; }

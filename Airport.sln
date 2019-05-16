@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightManagement", "FlightManagement\FlightManagement.csproj", "{57B8E8E6-B97A-40B9-9B84-22CAC7BC6524}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightManagement", "FlightManagement\FlightManagement.csproj", "{57B8E8E6-B97A-40B9-9B84-22CAC7BC6524}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GateManagement", "GateManagement\GateManagement.csproj", "{DE43FC18-FE51-49F5-9CDE-3F3D7DA3DD30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{57B8E8E6-B97A-40B9-9B84-22CAC7BC6524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57B8E8E6-B97A-40B9-9B84-22CAC7BC6524}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57B8E8E6-B97A-40B9-9B84-22CAC7BC6524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE43FC18-FE51-49F5-9CDE-3F3D7DA3DD30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE43FC18-FE51-49F5-9CDE-3F3D7DA3DD30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE43FC18-FE51-49F5-9CDE-3F3D7DA3DD30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE43FC18-FE51-49F5-9CDE-3F3D7DA3DD30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

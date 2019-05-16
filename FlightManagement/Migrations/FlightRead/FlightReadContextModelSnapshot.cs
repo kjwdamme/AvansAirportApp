@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace FlightManagement.Migrations
+namespace FlightManagement.Migrations.FlightRead
 {
-    [DbContext(typeof(FlightWriteContext))]
-    partial class FlightContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(FlightReadContext))]
+    partial class FlightReadContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

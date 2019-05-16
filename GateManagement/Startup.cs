@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FlightManagement.Entities;
-using FlightManagement.Repositories;
+using GateManagement.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace FlightManagement
+namespace GateManagement
 {
     public class Startup
     {
@@ -30,16 +29,9 @@ namespace FlightManagement
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            string writeConnection = @"Server=(localdb)\mssqllocaldb;Database=FlightWriteDatabase;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<FlightWriteContext>
+            string writeConnection = @"Server=(localdb)\mssqllocaldb;Database=GateWriteDatabase;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<GateWriteContext>
                 (options => options.UseSqlServer(writeConnection));
-
-            string readConnection = @"Server=(localdb)\mssqllocaldb;Database=FlightReadDatabase;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<FlightReadContext>
-                (options => options.UseSqlServer(readConnection));
-
-            services.AddTransient<AirlineRepository>();
-            services.AddTransient<FlightRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +43,7 @@ namespace FlightManagement
             }
             else
             {
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
