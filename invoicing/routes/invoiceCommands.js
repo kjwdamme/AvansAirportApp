@@ -7,16 +7,13 @@ router.get('/', function (req, res) {
     });
 });
 
-var contactController = require('../controllers/invoiceController');
+var contactController = require('../controllers/commandController');
 
 router.route('/invoices')
-    .get(contactController.index)
     .post(contactController.new);
 
 router.route('/invoices/:invoice_id')
-    .get(contactController.view)
     .patch(contactController.update)
-    .put(contactController.update)
-    .delete(contactController.delete);
+    .put(contactController.update);
  
     module.exports = router;

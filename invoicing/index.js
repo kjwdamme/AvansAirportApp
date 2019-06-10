@@ -2,7 +2,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 let app = express();
-let invoiceQueries = require("./query-routes/invoiceQueries")
+let invoiceQueries = require("./routes/invoiceQueries")
 
 app.use(bodyParser.urlencoded({
     extended: true
