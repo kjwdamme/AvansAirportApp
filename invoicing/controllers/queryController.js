@@ -1,4 +1,4 @@
-Invoice = require('../models/invoiceModel');
+Invoice = require('../models/queryModel');
 
 exports.index = function (req, res) {
     Invoice.get(function (err, invoices) {
@@ -17,11 +17,12 @@ exports.index = function (req, res) {
 };
 
 exports.view = function (req, res) {
-    Invoice.findById(req.params.invoice_id, function (err, invoice) {
+    queryInvoice.findById(req.params.invoice_id, function (err, invoice) {
         if (err)
             res.send(err);
         res.json({
-            message: 'Invoice details loading..',
+            status: "success",
+            message: "Invoice retrieved successfully",
             data: invoice
         });
     });

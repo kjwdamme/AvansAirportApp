@@ -7,13 +7,9 @@ router.get('/', function (req, res) {
     });
 });
 
-var contactController = require('../controllers/commandController');
+var commandController = require('../controllers/commandController');
 
 router.route('/invoices')
-    .post(contactController.new);
-
-router.route('/invoices/:invoice_id')
-    .patch(contactController.update)
-    .put(contactController.update);
+    .post(commandController.new);
  
     module.exports = router;
