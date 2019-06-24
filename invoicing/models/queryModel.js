@@ -1,33 +1,33 @@
 var mongoose = require('mongoose');
 
 var invoiceSchema = mongoose.Schema({
-    FlightID: {
+    flightID: {
         type: Number,
         required: true
     },
-    Passenger: [{
-        FirstName: {
+    passenger: [{
+        firstName: {
             type: String,
             required: true
         },
-        LastName: {
+        lastName: {
             type: String,
             required: true
         },
-        Age: {
+        age: {
             type: String,
             required: true
         },
-        Gender: {
+        gender: {
             type: String,
             required: true
         },
-        BaggageKG: {
+        baggageKG: {
             type: Number,
             required: true
         },
     }],
-    Email: {
+    email: {
         type: String,
         required: true
     }

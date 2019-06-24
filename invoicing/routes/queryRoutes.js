@@ -7,12 +7,12 @@ router.get('/', function (req, res) {
     });
 });
 
-var contactController = require('../controllers/queryController');
+var queryController = require('../controllers/queryController');
 
 router.route('/invoices')
-    .get(contactController.index);
+    .get(queryController.index);
 
 router.route('/invoices/:invoice_id')
-    .get(contactController.view);
+    .get(queryController.view);
  
     module.exports = router;

@@ -1,16 +1,27 @@
 Invoice = require('../models/commandModel');
+var mongoose = require('mongoose');
 
 exports.new = function (req, res) {
-    var invoice = new Invoice();
+    mongoose.connect('mongodb://admin:Admin0@ds034797.mlab.com:34797/writeinvoice', { useNewUrlParser: true });
 
-    invoice.FlightID = req.body.FlightID;
-    invoice.Passenger = req.body.Passenger;
-    invoice.Email = req.body.Email;
+    var db = mongoose.connection;
 
-    invoice.save(function (err) {
-        res.json({
-            message: 'New invoice created!',
-            data: invoice
+    db.once('open', function callback() {
+        var invoice = new Invoice();
+
+        invoice.flightID = req.body.flightID;
+        invoice.passenger = req.body.passenger;
+        invoice.email = req.body.email;
+
+        invoice.save(function (err) {
+            res.json({
+                message: 'New invoice created!',
+                data: invoice
+            });
+
+            mongoose.connection.close();
+            mongoose.disconnect();
+
         });
     });
 };

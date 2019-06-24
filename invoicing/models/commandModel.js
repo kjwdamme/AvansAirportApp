@@ -1,36 +1,40 @@
 var mongoose = require('mongoose');
 
 var commandSchema = mongoose.Schema({
-    FlightID: {
+    flightID: {
         type: Number,
         required: true
     },
-    Passenger: [{
-        FirstName: {
+    passenger: [{
+        firstName: {
             type: String,
             required: true
         },
-        LastName: {
+        lastName: {
             type: String,
             required: true
         },
-        Age: {
+        age: {
             type: String,
             required: true
         },
-        Gender: {
+        gender: {
             type: String,
             required: true
         },
-        BaggageKG: {
+        baggageKG: {
             type: Number,
             required: true
         },
     }],
-    Email: {
+    email: {
         type: String,
         required: true
     }
 });
 
 var CommandModel = module.exports = mongoose.model('commandModel', commandSchema);
+
+module.exports.get = function (callback, limit) {
+    CommandModel.find(callback).limit(limit);
+}
