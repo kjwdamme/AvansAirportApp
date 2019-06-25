@@ -7,17 +7,7 @@ const client = new MongoClient(url);
 module.exports = {
     scheduleCloneJob: function () {
         setInterval(function () {
-            console.log("Creating read/write consistensy...");
-
-            const client = require('mongodb').MongoClient;
-            client.connect({ useNewUrlParser: true }, function(err) {
-                assert.equal(null, err);
-                console.log("Connected successfully to server");
-              
-                const db = client.db(dbName);
-              
-                client.close();
-              });
-        }, 5000);
+            console.log("This would clone write to read database.");
+        }, 30000);
     }
 };

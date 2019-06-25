@@ -1,5 +1,7 @@
 var amqp = require('amqplib/callback_api');
 Invoice = require('../models/commandModel');
+var commandController = require('../controllers/commandController');
+var mongoose = require('mongoose');
 
     module.exports = {
         receive: function () {
@@ -22,22 +24,34 @@ Invoice = require('../models/commandModel');
             
                     channel.consume(queue, function (msg) {
                         console.log(" [x] Received message...");
+
+                        mongoose.connect('mongodb://admin:Admin0@ds034797.mlab.com:34797/writeinvoice', { useNewUrlParser: true });
+
+                        var db = mongoose.connection;
+
                         var booking = JSON.parse(msg.content.toString());
-                        delete booking._id;
+                    
+                        db.once('open', function callback() {
+                            var invoice = new Invoice()
             
-                        var invoice = new Invoice()
-            
-                        invoice.flightID = booking.flightID;
-                        invoice.passenger = booking.passenger;
-                        invoice.email = booking.email;
-            
-                        console.log(invoice);
-            
-                        invoice.save(function (err, invoice) {
-                            if (err) return console.error(err);
-                            console.log("Saved to collection.");
-                          });
-            
+                            invoice._id = booking._id;
+                            invoice.flightID = booking.flightID;
+                            invoice.passenger = booking.passenger;
+                            invoice.email = booking.email;
+                            invoice.costs = booking.costs;
+                
+                            console.log(invoice);
+                    
+                            invoice.save(function (err) {
+                                if (err) return console.error(err);
+                    
+                                commandController.sendInvoice(invoice);
+
+                                mongoose.connection.close();
+                                mongoose.disconnect();
+                    
+                            });
+                        });     
                     }, {
                             noAck: true
                         });

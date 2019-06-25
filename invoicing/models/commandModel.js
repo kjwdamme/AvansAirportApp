@@ -30,6 +30,10 @@ var commandSchema = mongoose.Schema({
     email: {
         type: String,
         required: true
+    },
+    costs: {
+        type: Number,
+        required: true
     }
 });
 

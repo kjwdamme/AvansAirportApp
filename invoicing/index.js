@@ -25,10 +25,6 @@ app.listen(port, function () {
     queue.receive();
 });
 
-// Automatically clone read/write DB (every hour)
-// Via mongoose or else native Mongo
-// Via raw admin command?
-
 // Right schema's
 
 // More routes
