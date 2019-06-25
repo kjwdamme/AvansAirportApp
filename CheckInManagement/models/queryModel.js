@@ -3,17 +3,29 @@ const Schema = mongoose.Schema;
 
 const queryModel = new Schema({
     passenger: [{
-        PassengerId: {
+        passengerId: {
             type: Number,
+            required: true,
         },
-        Name: {
+        firstName: {
             type: String,
+            required: true,
         },
-        Surname: {
+        lastName: {
             type: String,
+            required: true,
         },
-        Birthdate: {
-            type: Date,
+        age: {
+            type: Number,
+            required: true,
+        },
+        gender: {
+            type: String,
+            required: true,
+        },
+        baggageKG: {
+            type: Number,
+            required: true
         }
     }],
     flight: [{
@@ -33,7 +45,7 @@ const queryModel = new Schema({
             type: String,
         },
         IsArriving: {
-          type: Buffer,
+            type: Buffer,
         }
     }],
     checkedIn: {
