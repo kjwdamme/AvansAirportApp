@@ -1,8 +1,10 @@
 let express = require('express')
 let app = express();
+let env = require('./config/env');
 let mongoose = require ('mongoose');
-let apiRoutes = require ('./api/api-routes');
 let bodyParser = require('body-parser');
+let checkInCommands = require('./api/commandRoutes')
+let checkInQuery = require('./api/queryRoutes');
 
 module.exports = {};
 
@@ -14,24 +16,11 @@ app.use(bodyParser.json({
     type: ' application/vnd.api+json'
 }));
 
-mongoose.connect('mongodb://localhost/checkin', {
-    useNewUrlParser: true
-});
+app.set('port', env.env.port);
+app.set('env', 'development');
 
-var db = mongoose.connection;
-
-var port = process.env.PORT || 8080;
-
-app.use('/', apiRoutes)
-app.use(function (err, req, res, next) {
-    var error = {
-        message: err.message,
-        code: err.code,
-        name: err.name,
-        status: err.status
-    };
-    res.status(401).send(error);
-})
+app.use('/command', checkInCommands)
+app.use('/query', checkInQuery)
 
 app.use('*', function (req, res){
     res.status(400);
@@ -40,6 +29,6 @@ app.use('*', function (req, res){
     });
 });
 
-app.listen(port, function () {
-    console.log("Running on port " + port);
+app.listen(env.env.port, function () {
+    console.log("Running on port " + env.env.port);
 });
