@@ -14,11 +14,13 @@ var mongoose = require('mongoose');
                         throw error1;
                     }
             
-                    var queue = 'bookings';
+                    var queue = 'bookings2';
             
                     channel.assertQueue(queue, {
-                        durable: false
+                        durable: true 
                     });
+
+                    channel.prefetch(1);
             
                     console.log(" [*] Waiting for messages in %s.", queue);
             
@@ -49,11 +51,18 @@ var mongoose = require('mongoose');
 
                                 mongoose.connection.close();
                                 mongoose.disconnect();
+
+                                var secs = msg.content.toString().split('.').length - 1;
+
+                                setTimeout(function() {
+                                    console.log(" [x] Done");
+                                    channel.ack(msg);
+                                  }, secs * 1000);
                     
                             });
                         });     
                     }, {
-                            noAck: true
+                            noAck: false
                         });
                 });
             });

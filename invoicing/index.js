@@ -27,10 +27,6 @@ app.listen(port, function () {
 
 // Right schema's
 
-// More routes
-
-// Working reads
-
 // Treat objects like events
 
 // Apply to bookings API

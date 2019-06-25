@@ -8,6 +8,6 @@ module.exports = {
     scheduleCloneJob: function () {
         setInterval(function () {
             console.log("This would clone write to read database.");
-        }, 30000);
+        }, 300000);
     }
 };
