@@ -1,10 +1,12 @@
 let express = require('express')
 let app = express();
 let env = require('./config/env');
-let mongoose = require ('mongoose');
 let bodyParser = require('body-parser');
 let checkInCommands = require('./api/commandRoutes')
+
+checkIn = require('./models/commandModel');
 let checkInQuery = require('./api/queryRoutes');
+var cloneJob = require('./queue/clone');
 
 module.exports = {};
 
@@ -31,4 +33,5 @@ app.use('*', function (req, res){
 
 app.listen(env.env.port, function () {
     console.log("Running on port " + env.env.port);
+    cloneJob.scheduleCloneJob();
 });

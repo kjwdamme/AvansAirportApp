@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const env = require('../config/env');
 
 exports.index = function(req, res) {
-    mongoose.connect(env.env.mongoReadHost);
+    mongoose.connect(env.env.mongoReadHost, { useNewUrlParser: true });
     db = mongoose.connection;
 
     db.once('open', function callback() {
