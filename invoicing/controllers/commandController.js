@@ -39,17 +39,16 @@ exports.sendInvoice = function (receiver) {
 
     var mailOptions = {
         from: 'AvansFlights@gmail.com',
-        to: receiver,
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
-    };
-
+        to: receiver.email,
+        subject: 'Your flight invoice',
+        html: "<style> p { display: inline;} b {display: inline;} </style> <h1>Your flight invoice</h1> <p>Thank you for your purchase.<br> See your invoice details below and if you have any questions, contact us at AvansFlights@gmail.com</p><br><br> <div><b>E-mail: </b> <p>" + receiver.email + "</p></div> <div><b>Passengers: </b> <p>" + receiver.passenger.length + "</p></div><div><b>Costs/credit: </b> <p>" + receiver.costs + "</p></div>"
+            };
+        
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
-
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
 };
