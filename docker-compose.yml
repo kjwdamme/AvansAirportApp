@@ -18,6 +18,9 @@ services:
     depends_on:
      - rabbitmq
      - waitforrabbit
+    build:
+      context: ./invoicing
+      dockerfile: Dockerfile
     ports: 
      - "8080"
 
@@ -26,6 +29,9 @@ services:
     depends_on:
       - rabbitmq
       - waitforrabbit
+    build:
+      context: ./booking
+      dockerfile: Dockerfile
     ports:
       - "9090"
 
