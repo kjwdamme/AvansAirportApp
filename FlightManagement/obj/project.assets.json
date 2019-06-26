@@ -12526,11 +12526,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\Airport\\FlightManagement\\FlightManagement.csproj",
+      "projectUniqueName": "C:\\dev\\avansairport\\FlightManagement\\FlightManagement.csproj",
       "projectName": "FlightManagement",
-      "projectPath": "C:\\dev\\Airport\\FlightManagement\\FlightManagement.csproj",
+      "projectPath": "C:\\dev\\avansairport\\FlightManagement\\FlightManagement.csproj",
       "packagesPath": "C:\\Users\\kjwdamme\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\Airport\\FlightManagement\\obj\\",
+      "outputPath": "C:\\dev\\avansairport\\FlightManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
