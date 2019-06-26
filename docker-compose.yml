@@ -19,7 +19,7 @@ services:
      - rabbitmq
      - waitforrabbit
     build:
-      context: ./invoicing
+      context: /invoicing
       dockerfile: Dockerfile
     ports: 
      - "8080"
@@ -30,7 +30,7 @@ services:
       - rabbitmq
       - waitforrabbit
     build:
-      context: ./booking
+      context: /booking
       dockerfile: Dockerfile
     ports:
       - "9090"
