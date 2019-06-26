@@ -42,11 +42,6 @@ namespace GateManagement.Services
                                   autoDelete: false,
                                   arguments: null);
 
-            //_channel.ExchangeDeclare("demo.exchange", ExchangeType.Topic);
-            //_channel.QueueDeclare("demo.queue.log", false, false, false, null);
-            //_channel.QueueBind("demo.queue.log", "demo.exchange", "demo.queue.*", null);
-            //_channel.BasicQos(0, 1, false);
-
             _connection.ConnectionShutdown += RabbitMQ_ConnectionShutdown;
         }
 
