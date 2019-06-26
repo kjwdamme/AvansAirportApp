@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,6 +20,7 @@ namespace GateManagement.Entities
 
         public CheckInCounter CheckInCounter { get; set; }
         [Required]
-        public int CheckInCounterId { get; set; }
+        [ForeignKey("CheckInCounter")]
+        public string CheckInCounterNumber { get; set; }
     }
 }

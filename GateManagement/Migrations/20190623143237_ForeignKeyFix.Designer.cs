@@ -4,14 +4,16 @@ using GateManagement.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GateManagement.Migrations
 {
     [DbContext(typeof(GateWriteContext))]
-    partial class GateWriteContextModelSnapshot : ModelSnapshot
+    [Migration("20190623143237_ForeignKeyFix")]
+    partial class ForeignKeyFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

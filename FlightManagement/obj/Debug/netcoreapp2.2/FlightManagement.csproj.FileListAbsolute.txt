@@ -12,6 +12,3 @@ C:\dev\Airport\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.Assembl
 C:\dev\Airport\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.RazorTargetAssemblyInfo.cache
 C:\dev\Airport\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.dll
 C:\dev\Airport\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.pdb
-C:\dev\Airport\FlightManagement\bin\Debug\netcoreapp2.2\GateManagement.dll
-C:\dev\Airport\FlightManagement\bin\Debug\netcoreapp2.2\GateManagement.pdb
-C:\dev\Airport\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.csproj.CopyComplete

@@ -63,7 +63,7 @@ namespace FlightManagement.Migrations.FlightRead
 
                     b.Property<int>("AirlineId");
 
-                    b.Property<DateTime>("ArrivalDate");
+                    b.Property<double>("Cost");
 
                     b.Property<int>("DelayMinutes");
 
@@ -74,8 +74,6 @@ namespace FlightManagement.Migrations.FlightRead
                         .HasMaxLength(255);
 
                     b.Property<int>("DurationMinutes");
-
-                    b.Property<bool>("IsArriving");
 
                     b.Property<int>("PlaneId");
 

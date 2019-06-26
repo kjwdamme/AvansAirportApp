@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GateManagement.Entities;
+using GateManagement.Repositories;
+using GateManagement.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,16 @@ namespace GateManagement
             string writeConnection = @"Server=(localdb)\mssqllocaldb;Database=GateWriteDatabase;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<GateWriteContext>
                 (options => options.UseSqlServer(writeConnection));
+
+            string readConnection = @"Server=(localdb)\mssqllocaldb;Database=GateReadDatabase;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<GateReadContext>
+                (options => options.UseSqlServer(readConnection));
+
+            services.AddTransient<GateRepository>();
+            services.AddTransient<CheckInCounterRepository>();
+            //services.AddTransient<QueueReceiver>();
+            services.AddHostedService<GateQueueHostedService>();
+            services.AddHostedService<CheckInCounterQueueHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

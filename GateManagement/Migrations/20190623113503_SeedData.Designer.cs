@@ -4,14 +4,16 @@ using GateManagement.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GateManagement.Migrations
 {
     [DbContext(typeof(GateWriteContext))]
-    partial class GateWriteContextModelSnapshot : ModelSnapshot
+    [Migration("20190623113503_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,8 +51,9 @@ namespace GateManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CheckInCounterNumber")
-                        .IsRequired();
+                    b.Property<int>("CheckInCounterId");
+
+                    b.Property<string>("CheckInCounterNumber");
 
                     b.Property<DateTime>("ClosingTime");
 
@@ -75,8 +78,9 @@ namespace GateManagement.Migrations
 
                     b.Property<int>("FlightId");
 
-                    b.Property<string>("GateNumber")
-                        .IsRequired();
+                    b.Property<int>("GateId");
+
+                    b.Property<string>("GateNumber");
 
                     b.Property<DateTime>("OpeningTime");
 
@@ -119,16 +123,14 @@ namespace GateManagement.Migrations
                 {
                     b.HasOne("GateManagement.Entities.CheckInCounter", "CheckInCounter")
                         .WithMany("FlightCheckInCounters")
-                        .HasForeignKey("CheckInCounterNumber")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CheckInCounterNumber");
                 });
 
             modelBuilder.Entity("GateManagement.Entities.FlightGate", b =>
                 {
                     b.HasOne("GateManagement.Entities.Gate", "Gate")
                         .WithMany("FlightGates")
-                        .HasForeignKey("GateNumber")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("GateNumber");
                 });
 #pragma warning restore 612, 618
         }

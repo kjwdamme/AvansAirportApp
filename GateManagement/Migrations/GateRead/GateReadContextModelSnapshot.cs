@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace GateManagement.Migrations
+namespace GateManagement.Migrations.GateRead
 {
-    [DbContext(typeof(GateWriteContext))]
-    partial class GateWriteContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(GateReadContext))]
+    partial class GateReadContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -29,18 +29,6 @@ namespace GateManagement.Migrations
                     b.HasKey("Number");
 
                     b.ToTable("CheckInCounters");
-
-                    b.HasData(
-                        new
-                        {
-                            Number = "1",
-                            BaggageDropOffPoint = true
-                        },
-                        new
-                        {
-                            Number = "2",
-                            BaggageDropOffPoint = true
-                        });
                 });
 
             modelBuilder.Entity("GateManagement.Entities.FlightCheckInCounter", b =>
@@ -95,24 +83,6 @@ namespace GateManagement.Migrations
                     b.HasKey("Number");
 
                     b.ToTable("Gates");
-
-                    b.HasData(
-                        new
-                        {
-                            Number = "A1"
-                        },
-                        new
-                        {
-                            Number = "A2"
-                        },
-                        new
-                        {
-                            Number = "B1"
-                        },
-                        new
-                        {
-                            Number = "B2"
-                        });
                 });
 
             modelBuilder.Entity("GateManagement.Entities.FlightCheckInCounter", b =>

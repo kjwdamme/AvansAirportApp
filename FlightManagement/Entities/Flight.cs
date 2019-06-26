@@ -10,9 +10,8 @@ namespace FlightManagement.Entities
     {
         [Key]
         public int FlightId { get; set; }
-
+        [Required]
         public DateTime DepartureDate { get; set; }
-        public DateTime ArrivalDate { get; set; }
         [Required]
         public int DurationMinutes { get; set; }
         public int DelayMinutes { get; set; }
@@ -20,13 +19,11 @@ namespace FlightManagement.Entities
         [Required]
         public string Destination { get; set; }
         [Required]
-        public bool IsArriving { get; set; }
-
+        public double Cost { get; set; }
         [Required]
         public Airline Airline { get; set; }
         [Required]
         public int AirlineId { get; set; }
-
         [Required]
         public Plane Plane { get; set; }
         [Required]

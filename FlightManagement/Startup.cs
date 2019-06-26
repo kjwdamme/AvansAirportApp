@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FlightManagement.Controllers;
 using FlightManagement.Entities;
 using FlightManagement.Repositories;
+using FlightManagement.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,8 +40,11 @@ namespace FlightManagement
             services.AddDbContext<FlightReadContext>
                 (options => options.UseSqlServer(readConnection));
 
+            services.AddHttpClient<FlightController>();
+
             services.AddTransient<AirlineRepository>();
             services.AddTransient<FlightRepository>();
+            services.AddTransient<QueueService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

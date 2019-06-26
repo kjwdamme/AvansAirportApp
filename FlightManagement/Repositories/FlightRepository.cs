@@ -18,21 +18,24 @@ namespace FlightManagement.Repositories
 
         public FlightModel AddFlight(int airlineId, FlightModel flightModel)
         {
-            this.Entities.Flights.Add(new Flight
+            Flight flightToAdd = new Flight
             {
                 AirlineId = airlineId,
-                ArrivalDate = flightModel.ArrivalDate,
                 DelayMinutes = flightModel.DelayMinutes,
                 DepartureDate = flightModel.DepartureDate,
                 Destination = flightModel.Destination,
                 DurationMinutes = flightModel.DurationMinutes,
-                IsArriving = flightModel.IsArriving,
                 PlaneId = this.Entities.Planes.Where(p => p.Name == flightModel.PlaneName).Select(p => p.Id).SingleOrDefault()
-            });
+            };
 
+            this.Entities.Flights.Add(flightToAdd);
             this.Entities.SaveChanges();
 
-            return flightModel;
+            return new FlightModel
+            {
+                Id = flightToAdd.FlightId,
+                DepartureDate = flightToAdd.DepartureDate
+            };
         }
 
         public bool AirlineOwnsPlane(int airlineId, string planeName)

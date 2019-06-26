@@ -15,5 +15,20 @@ namespace GateManagement.Entities
         public DbSet<FlightCheckInCounter> FlightCheckInCounters { get; set; }
         public DbSet<Gate> Gates { get; set; }
         public DbSet<FlightGate> FlightGates { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Gate>().HasData(
+                new Gate { Number = "A1"},
+                new Gate { Number = "A2"},
+                new Gate { Number = "B1"},
+                new Gate { Number = "B2"}
+            );
+
+            modelBuilder.Entity<CheckInCounter>().HasData(
+                new CheckInCounter { Number = "1", BaggageDropOffPoint = true },
+                new CheckInCounter { Number = "2", BaggageDropOffPoint = true }
+            );
+        }
     }
 }
