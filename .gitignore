@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+node_modules/
+
+Dockerfile
+=======
 
 # Created by https://www.gitignore.io/api/node
 # Edit at https://www.gitignore.io/?templates=node
@@ -98,3 +103,4 @@ coverage/
 package-lock.json
 .vs
 .git
+>>>>>>> master

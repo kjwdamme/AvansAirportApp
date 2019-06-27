@@ -1,0 +1,6 @@
+@echo off
+Copy invoice write to invoice read database.
+echo Copying write to read database...
+mongo "mongodb://admin:Admin0@ds060749.mlab.com:60749/readinvoice" --eval "db.dropDatabase(); db.copyDatabase('writeinvoice', 'readinvoice', 'ds034797.mlab.com:34797', 'admin', 'Admin0', null)"
+echo Done copying database...
+pause
