@@ -20,7 +20,7 @@ services:
      - waitforrabbit
     build:
       context: .
-      dockerfile: invoicing/Dockerfile
+      dockerfile: /invoicing/Dockerfile
     ports: 
      - "8080"
 
