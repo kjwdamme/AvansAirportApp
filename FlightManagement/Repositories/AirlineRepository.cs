@@ -39,7 +39,30 @@ namespace FlightManagement.Repositories
                 .Select(a => new AirlineModel
                 {
                     Id = a.Id,
-                    Name = a.Name
+                    Name = a.Name,
+                    BookingInformation = a.Flights.Select(f => new BookingInformationModel
+                    {
+                        FlightId = f.FlightId,
+                        MaxBagageWeightKilograms = f.Plane.MaxBaggageWeight,
+                        MaxPassengers = f.Plane.MaxPassengers
+                    })
+                });
+        }
+
+        public IEnumerable<AirlineModel> GetAirlineFlightInformation()
+        {
+            return this.Entities.Airlines
+                .Select(a => new AirlineModel
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    FlightModels = a.Flights.Select(f => new FlightModel
+                    {
+                        Id = f.FlightId,
+                        Destination = f.Destination,
+                        DurationMinutes = f.DurationMinutes,
+                        Cost = f.Cost
+                    })
                 });
         }
 

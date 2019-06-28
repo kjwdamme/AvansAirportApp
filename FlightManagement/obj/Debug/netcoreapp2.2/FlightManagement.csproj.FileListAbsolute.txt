@@ -26,3 +26,17 @@ C:\dev\avansairport\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.As
 C:\dev\avansairport\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.RazorTargetAssemblyInfo.cache
 C:\dev\avansairport\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.dll
 C:\dev\avansairport\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.pdb
+C:\dev\AvansAirportApp\FlightManagement\bin\Debug\netcoreapp2.2\FlightManagement.deps.json
+C:\dev\AvansAirportApp\FlightManagement\bin\Debug\netcoreapp2.2\FlightManagement.runtimeconfig.json
+C:\dev\AvansAirportApp\FlightManagement\bin\Debug\netcoreapp2.2\FlightManagement.runtimeconfig.dev.json
+C:\dev\AvansAirportApp\FlightManagement\bin\Debug\netcoreapp2.2\FlightManagement.dll
+C:\dev\AvansAirportApp\FlightManagement\bin\Debug\netcoreapp2.2\FlightManagement.pdb
+C:\dev\AvansAirportApp\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.csprojAssemblyReference.cache
+C:\dev\AvansAirportApp\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.csproj.CoreCompileInputs.cache
+C:\dev\AvansAirportApp\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.RazorAssemblyInfo.cache
+C:\dev\AvansAirportApp\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.RazorAssemblyInfo.cs
+C:\dev\AvansAirportApp\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.AssemblyInfoInputs.cache
+C:\dev\AvansAirportApp\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.AssemblyInfo.cs
+C:\dev\AvansAirportApp\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.RazorTargetAssemblyInfo.cache
+C:\dev\AvansAirportApp\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.dll
+C:\dev\AvansAirportApp\FlightManagement\obj\Debug\netcoreapp2.2\FlightManagement.pdb

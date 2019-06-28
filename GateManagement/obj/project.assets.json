@@ -12524,11 +12524,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\avansairport\\GateManagement\\GateManagement.csproj",
+      "projectUniqueName": "C:\\dev\\AvansAirportApp\\GateManagement\\GateManagement.csproj",
       "projectName": "GateManagement",
-      "projectPath": "C:\\dev\\avansairport\\GateManagement\\GateManagement.csproj",
+      "projectPath": "C:\\dev\\AvansAirportApp\\GateManagement\\GateManagement.csproj",
       "packagesPath": "C:\\Users\\kjwdamme\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\avansairport\\GateManagement\\obj\\",
+      "outputPath": "C:\\dev\\AvansAirportApp\\GateManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

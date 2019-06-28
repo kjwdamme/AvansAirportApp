@@ -51,6 +51,12 @@ namespace FlightManagement.Controllers
             return this.Ok(this.Repository.GetAirlines());
         }
 
+        [HttpGet("flights")]
+        public IActionResult GetAirlineFlights()
+        {
+            return this.Ok(this.Repository.GetAirlineFlightInformation());
+        }
+
         [HttpPost("{id}/planes")]
         public IActionResult AssignPlane(int id, [FromBody] PlaneModel planeModel)
         {
