@@ -7,12 +7,18 @@ router.get('/', function (req, res) {
     });
 });
 
-var bookingController = require('../controllers/queryController');
+var queryController = require('../controllers/queryController');
 
 router.route('/bookings')
-    .get(bookingController.index);
+    .get(queryController.index);
 
 router.route('/bookings/:booking_id')
-    .get(bookingController.view);
- 
-    module.exports = router;
+    .get(queryController.viewByID);
+
+router.route('/bookings/email/:email')
+    .get(queryController.viewByEmail);
+
+router.route('/bookings/flightstatus/:flightID')
+    .get(queryController.viewFlightStatus);
+
+module.exports = router;

@@ -24,9 +24,3 @@ app.listen(port, function () {
     cloneJob.scheduleCloneJob();
     queue.receive();
 });
-
-// Right schema's
-
-// Treat objects like events
-
-// Apply to bookings API

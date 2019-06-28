@@ -26,6 +26,11 @@ var commandSchema = mongoose.Schema({
             type: Number,
             required: true
         },
+        isValid: {
+            type: Boolean,
+            required: true,
+            default: true
+        }
     }],
     email: {
         type: String,

@@ -15,6 +15,8 @@ exports.new = function (req, res) {
         booking.email = req.body.email;
         booking.costs = req.body.costs;
 
+        // if passengers || baggage < 0, check if total is 0 + passengers || 0 + baggage
+
         // check if max flight baggage is reached
         // check if there are places left
         // check if max baggage pp is reached
