@@ -3,6 +3,7 @@ let app = express();
 let env = require('./config/env');
 let bodyParser = require('body-parser');
 let checkInCommands = require('./api/commandRoutes')
+let queue = require('./queue/receive');
 
 checkIn = require('./models/commandModel');
 let checkInQuery = require('./api/queryRoutes');
@@ -33,5 +34,6 @@ app.use('*', function (req, res){
 
 app.listen(env.env.port, function () {
     console.log("Running on port " + env.env.port);
-    cloneJob.scheduleCloneJob();
+    // cloneJob.scheduleCloneJob();
+    queue.receive();
 });

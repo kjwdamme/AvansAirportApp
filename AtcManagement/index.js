@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 // var db = mongoose.connection;
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 1010;
 
 app.use('/command', atcCommands)
 
@@ -27,8 +27,8 @@ app.use('/query', atcQueries)
 
 app.listen(port, function () {
     console.log("Running on port " + port);
-    cloneJob.scheduleCloneJob();
-    queue.receive();
+    // cloneJob.scheduleCloneJob();
+    // queue.receive();
 });
 
 

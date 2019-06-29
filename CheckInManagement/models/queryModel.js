@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 
 const queryModel = new Schema({
     passenger: [{
-        passengerId: {
-            type: Number,
-            required: true,
-        },
         firstName: {
             type: String,
             required: true,
@@ -45,11 +41,15 @@ const queryModel = new Schema({
             type: String,
         },
         IsArriving: {
-            type: Buffer,
+            type: Boolean,
         }
     }],
+    email: {
+        type: String,
+        required: true
+    },
     checkedIn: {
-        type: Buffer
+        type: Boolean
     },
     checkedInDate: {
         type: Date,

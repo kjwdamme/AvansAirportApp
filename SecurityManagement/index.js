@@ -5,7 +5,7 @@ let writeRoutes = require("./routes/writeRoutes");
 let readRoutes = require("./routes/readRoutes");
 var queue = require('./queue/receive');
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 4040;
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -19,5 +19,5 @@ app.use('/write', writeRoutes);
 
 app.listen(port, function () {
     console.log("Running on port " + port);
-    queue.receive();
+    // queue.receive();
 });

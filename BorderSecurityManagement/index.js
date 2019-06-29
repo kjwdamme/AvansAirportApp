@@ -5,7 +5,7 @@ let writeRoutes = require("./routes/writeRoutes");
 let readRoutes = require("./routes/readRoutes");
 var queue = require('./queue/receive');
 
-var port = process.env.PORT || 8081;
+var port = process.env.PORT || 2020;
 
 app.use(bodyParser.urlencoded({
     extended: true

@@ -17,7 +17,7 @@ exports.index = function (req, res) {
             }
             res.json({
                 status: "success",
-                message: "Heil fucking hitler",
+                message: "succesfully retrieved",
                 data: events
             });
             mongoose.connection.close();

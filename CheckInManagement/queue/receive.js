@@ -1,6 +1,6 @@
 var amqp = require('amqplib/callback_api');
-borderSecurity = require('../models/writeModel');
-var commandController = require('../controllers/writeController');
+checkIn = require('../models/commandModel');
+var commandController = require('../controllers/commandController');
 var mongoose = require('mongoose');
 
 module.exports = {
@@ -19,38 +19,42 @@ module.exports = {
                     durable: false
                 });
 
-                channel.assertQueue('bookingqueue4', {
+                channel.assertQueue('bookingqueue3', {
                     exclusive: false
                 }, function (error2, q) {
                     if (error2) {
                         throw error2;
                     }
                     console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
-                    channel.bindQueue('bookingqueue4', exchange, '');
+                    channel.bindQueue('bookingqueue3', exchange, '');
 
-                    channel.consume('bookingqueue4', function (msg) {
+                    channel.consume('bookingqueue3', function (msg) {
                         if (msg.content) {
-                            mongoose.connect('mongodb://User:User123@ds026658.mlab.com:26658/bordersecurity_write', { useNewUrlParser: true });
+                            mongoose.connect('mongodb://admin:admin123@ds343217.mlab.com:43217/writecheckin', { useNewUrlParser: true });
 
                             var db = mongoose.connection;
 
                             var booking = JSON.parse(msg.content.toString());
 
                             db.once('open', function callback() {
-                                var bordersecurity = new borderSecurity()
+                                var checkin = new checkIn()
 
-                                // foreach passenger...
-                                // check if firstname + lastname already exists 
-                                console.log(booking);
-                                bordersecurity.firstName = booking.passenger[0].firstName;
-                                bordersecurity.lastName = booking.passenger[0].lastName;
-                                bordersecurity.age = booking.passenger[0].age;
-                                bordersecurity.gender = booking.passenger[0].gender;
-                                bordersecurity.flightID = booking.flightID;
+                                checkin._id = booking._id;
+                                checkin.passenger = booking.passenger;
+                                checkin.email = booking.email;
+                                checkin.flight = [{
+                                    PlaneId: 5,
+                                    AirlineId: 5,
+                                    DepartureDate: "01-01-2019",
+                                    Delay: 5,
+                                    Destination: "Turkey",
+                                    IsArriving: false
+                                }],
+                                checkin.checkedIn = false
 
-                                console.log(bordersecurity);
+                                console.log(checkin);
 
-                                bordersecurity.save(function (err) {
+                                checkin.save(function (err) {
                                     if(err) return console.error(err);
 
                                     // commandController.sendInvoice(invoice);

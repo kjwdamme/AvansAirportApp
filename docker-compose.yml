@@ -35,6 +35,38 @@ services:
     ports:
       - "9090"
 
+  atcmanagement:
+    image: gompermike/atcmanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    ports:
+      - "1010"    
+
+  bordersecuritymanagement:
+    image: gompermike/bordersecuritymanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    ports:
+      - "2020"
+
+  checkinmanagement:
+    image: gompermike/checkinmanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    ports:
+      - "3030"
+
+  securitymanagement:
+    image: gompermike/securitymanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    ports:
+      - "4040"
+
   waitforrabbit:
     image: dadarek/wait-for-dependencies
     depends_on:
