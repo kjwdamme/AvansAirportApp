@@ -5913,7 +5913,6 @@
       "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
-      "hasTools": true,
       "files": [
         ".nupkg.metadata",
         "ThirdPartyNotices.rtf",
@@ -12518,30 +12517,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kjwdamme\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/kjwdamme/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\AvansAirportApp\\GateManagement\\GateManagement.csproj",
+      "projectUniqueName": "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/GateManagement.csproj",
       "projectName": "GateManagement",
-      "projectPath": "C:\\dev\\AvansAirportApp\\GateManagement\\GateManagement.csproj",
-      "packagesPath": "C:\\Users\\kjwdamme\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\AvansAirportApp\\GateManagement\\obj\\",
+      "projectPath": "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/GateManagement.csproj",
+      "packagesPath": "/Users/kjwdamme/.nuget/packages/",
+      "outputPath": "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\kjwdamme\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/kjwdamme/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

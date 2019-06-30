@@ -15,5 +15,10 @@ namespace FlightManagement.Entities
         public DbSet<AirlinePlane> AirlinePlanes { get; set; }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Plane> Planes { get; set; }
+
+        public void MigrateDB()
+        {
+            Database.Migrate();
+        }
     }
 }

@@ -2,6 +2,30 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.2": {
+      "EFCore.BulkExtensions/2.4.7": {
+        "type": "package",
+        "dependencies": {
+          "FastMember": "1.5.0",
+          "Microsoft.EntityFrameworkCore": "2.2.2",
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.2",
+          "System.Data.SqlClient": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/EFCore.BulkExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/EFCore.BulkExtensions.dll": {}
+        }
+      },
+      "FastMember/1.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/FastMember.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/FastMember.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -2720,6 +2744,15 @@
           }
         }
       },
+      "NCrontab/3.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NCrontab.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NCrontab.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -4611,6 +4644,32 @@
     }
   },
   "libraries": {
+    "EFCore.BulkExtensions/2.4.7": {
+      "sha512": "7OXsydMt61LRLVV9XjucBI4tbrECR6JuWNFPLOAD0R6LPeqj6DEbfsShgriQAUgnxtiZpENfKwEbFXSHa4c91w==",
+      "type": "package",
+      "path": "efcore.bulkextensions/2.4.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "efcore.bulkextensions.2.4.7.nupkg.sha512",
+        "efcore.bulkextensions.nuspec",
+        "lib/netstandard2.0/EFCore.BulkExtensions.dll"
+      ]
+    },
+    "FastMember/1.5.0": {
+      "sha512": "Db80coUbys8VgmcrR9mxUR+EInTpweoLM0GFJXIBuj8+PTgqV+ygq+EOM3HME83tob1+RR9XlBcEkpfFyypdHg==",
+      "type": "package",
+      "path": "fastmember/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fastmember.1.5.0.nupkg.sha512",
+        "fastmember.nuspec",
+        "lib/net461/FastMember.dll",
+        "lib/netcoreapp2.0/FastMember.dll",
+        "lib/netstandard2.0/FastMember.dll"
+      ]
+    },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "sha512": "owAlEIUZXWSnkK8Z1c+zR47A0X6ykF4XjbPok4lQKNuciUfHLGPd6QnI+rt/8KlQ17PmF+I4S3f+m+Qe4IvViw==",
       "type": "package",
@@ -5913,7 +5972,6 @@
       "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
-      "hasTools": true,
       "files": [
         ".nupkg.metadata",
         "ThirdPartyNotices.rtf",
@@ -7411,6 +7469,24 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "NCrontab/3.3.1": {
+      "sha512": "G3tzcIIgsiyZyVbHNPyn5+adaM9UjeVNgjrRsvXU7wo2sMhpvpQrir29dcjIND53H/fuTdgg9nI3SfFFg7barA==",
+      "type": "package",
+      "path": "ncrontab/3.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "COPYING.txt",
+        "lib/net35/NCrontab.dll",
+        "lib/net35/NCrontab.pdb",
+        "lib/netstandard1.0/NCrontab.dll",
+        "lib/netstandard1.0/NCrontab.pdb",
+        "lib/netstandard2.0/NCrontab.dll",
+        "lib/netstandard2.0/NCrontab.pdb",
+        "ncrontab.3.3.1.nupkg.sha512",
+        "ncrontab.nuspec"
       ]
     },
     "NETStandard.Library/2.0.3": {
@@ -12511,39 +12587,39 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "EFCore.BulkExtensions >= 2.4.7",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 2.2.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.4",
       "Microsoft.NETCore.App >= 2.2.0",
-      "RabbitMQ.Client >= 5.1.0"
+      "RabbitMQ.Client >= 5.1.0",
+      "ncrontab >= 3.3.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kjwdamme\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/kjwdamme/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\AvansAirportApp\\FlightManagement\\FlightManagement.csproj",
+      "projectUniqueName": "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/FlightManagement.csproj",
       "projectName": "FlightManagement",
-      "projectPath": "C:\\dev\\AvansAirportApp\\FlightManagement\\FlightManagement.csproj",
-      "packagesPath": "C:\\Users\\kjwdamme\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\AvansAirportApp\\FlightManagement\\obj\\",
+      "projectPath": "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/FlightManagement.csproj",
+      "packagesPath": "/Users/kjwdamme/.nuget/packages/",
+      "outputPath": "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\kjwdamme\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/kjwdamme/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12560,6 +12636,10 @@
     "frameworks": {
       "netcoreapp2.2": {
         "dependencies": {
+          "EFCore.BulkExtensions": {
+            "target": "Package",
+            "version": "[2.4.7, )"
+          },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
@@ -12588,6 +12668,10 @@
           "RabbitMQ.Client": {
             "target": "Package",
             "version": "[5.1.0, )"
+          },
+          "ncrontab": {
+            "target": "Package",
+            "version": "[3.3.1, )"
           }
         },
         "imports": [
