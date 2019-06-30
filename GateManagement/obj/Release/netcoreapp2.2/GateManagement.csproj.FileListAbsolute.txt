@@ -1,0 +1,14 @@
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/bin/Release/netcoreapp2.2/GateManagement.deps.json
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/bin/Release/netcoreapp2.2/GateManagement.runtimeconfig.json
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/bin/Release/netcoreapp2.2/GateManagement.runtimeconfig.dev.json
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/bin/Release/netcoreapp2.2/GateManagement.dll
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/bin/Release/netcoreapp2.2/GateManagement.pdb
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/Release/netcoreapp2.2/GateManagement.csprojAssemblyReference.cache
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/Release/netcoreapp2.2/GateManagement.csproj.CoreCompileInputs.cache
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/Release/netcoreapp2.2/GateManagement.RazorAssemblyInfo.cache
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/Release/netcoreapp2.2/GateManagement.RazorAssemblyInfo.cs
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/Release/netcoreapp2.2/GateManagement.AssemblyInfoInputs.cache
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/Release/netcoreapp2.2/GateManagement.AssemblyInfo.cs
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/Release/netcoreapp2.2/GateManagement.RazorTargetAssemblyInfo.cache
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/Release/netcoreapp2.2/GateManagement.dll
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/Release/netcoreapp2.2/GateManagement.pdb

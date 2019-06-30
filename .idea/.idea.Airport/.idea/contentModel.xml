@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/Library/Caches/Rider2019.1/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.1/resharper-host/local/Transient/ReSharperHost/v191/SolutionCaches/_Airport.-1607849501.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Airport.sln" t="IncludeFlat" />
+      <e p="FlightManagement" t="IncludeRecursive">
+        <e p=".dockerignore" t="Include" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="BackgroundService" t="Include">
+          <e p="BackgroundService.cs" t="Include" />
+          <e p="ScopedProcessor.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="AirlineController.cs" t="Include" />
+          <e p="FlightController.cs" t="Include" />
+        </e>
+        <e p="Dockerfile" t="Include" />
+        <e p="Entities" t="Include">
+          <e p="Airline.cs" t="Include" />
+          <e p="AirlinePlane.cs" t="Include" />
+          <e p="Flight.cs" t="Include" />
+          <e p="FlightReadContext.cs" t="Include" />
+          <e p="FlightWriteContext.cs" t="Include" />
+          <e p="Plane.cs" t="Include" />
+        </e>
+        <e p="FlightManagement.csproj" t="IncludeRecursive" />
+        <e p="Migrations" t="Include">
+          <e p="20190515130029_Initial.cs" t="Include" />
+          <e p="20190515130029_Initial.Designer.cs" t="Include" />
+          <e p="20190626121017_RemovedArriving.cs" t="Include" />
+          <e p="20190626121017_RemovedArriving.Designer.cs" t="Include" />
+          <e p="FlightContextModelSnapshot.cs" t="Include" />
+          <e p="FlightRead" t="Include">
+            <e p="20190516104408_WriteDatabaseInitialize.cs" t="Include" />
+            <e p="20190516104408_WriteDatabaseInitialize.Designer.cs" t="Include" />
+            <e p="20190626121054_RemovedArriving.cs" t="Include" />
+            <e p="20190626121054_RemovedArriving.Designer.cs" t="Include" />
+            <e p="FlightReadContextModelSnapshot.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Models" t="Include">
+          <e p="AirlineModel.cs" t="Include" />
+          <e p="AirlinePlaneModel.cs" t="Include" />
+          <e p="BookingInformationModel.cs" t="Include" />
+          <e p="FlightModel.cs" t="Include" />
+          <e p="PlaneModel.cs" t="Include" />
+          <e p="QueueModel.cs" t="Include" />
+          <e p="ResponseModel.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="FlightManagement.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="out" t="Include">
+          <e p="appsettings.Development.json" t="Include" />
+          <e p="appsettings.json" t="Include" />
+          <e p="dist" t="Include">
+            <e p="appsettings.Development.json" t="Include" />
+            <e p="appsettings.json" t="Include" />
+            <e p="FlightManagement.deps.json" t="Include" />
+            <e p="FlightManagement.runtimeconfig.json" t="Include" />
+            <e p="global.json" t="Include" />
+            <e p="web.config" t="Include" />
+          </e>
+          <e p="FlightManagement.deps.json" t="Include" />
+          <e p="FlightManagement.dll" t="Include" />
+          <e p="FlightManagement.pdb" t="Include" />
+          <e p="FlightManagement.runtimeconfig.json" t="Include" />
+          <e p="global.json" t="Include" />
+          <e p="Microsoft.EntityFrameworkCore.Abstractions.dll" t="Include" />
+          <e p="Microsoft.EntityFrameworkCore.dll" t="Include" />
+          <e p="Microsoft.EntityFrameworkCore.Relational.dll" t="Include" />
+          <e p="Microsoft.EntityFrameworkCore.SqlServer.dll" t="Include" />
+          <e p="RabbitMQ.Client.dll" t="Include" />
+          <e p="Remotion.Linq.dll" t="Include" />
+          <e p="System.Interactive.Async.dll" t="Include" />
+          <e p="web.config" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="AirlineRepository.cs" t="Include" />
+          <e p="FlightRepository.cs" t="Include" />
+        </e>
+        <e p="Scheduler" t="Include">
+          <e p="DatabaseSynchronizeTask.cs" t="Include" />
+          <e p="ScheduledProcessor.cs" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="QueueService.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="wwwroot" t="Include" />
+      </e>
+      <e p="GateManagement" t="IncludeRecursive">
+        <e p=".dockerignore" t="Include" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="BackgroundService" t="Include">
+          <e p="BackgroundService.cs" t="Include" />
+          <e p="ScopedProcessor.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="GateController.cs" t="Include" />
+        </e>
+        <e p="Dockerfile" t="Include" />
+        <e p="Entities" t="Include">
+          <e p="CheckInCounter.cs" t="Include" />
+          <e p="FlightCheckInCounter.cs" t="Include" />
+          <e p="FlightGate.cs" t="Include" />
+          <e p="Gate.cs" t="Include" />
+          <e p="GateReadContext.cs" t="Include" />
+          <e p="GateWriteContext.cs" t="Include" />
+        </e>
+        <e p="GateManagement.csproj" t="IncludeRecursive" />
+        <e p="Migrations" t="Include">
+          <e p="20190516125942_WriteInitial.cs" t="Include" />
+          <e p="20190516125942_WriteInitial.Designer.cs" t="Include" />
+          <e p="20190623113503_SeedData.cs" t="Include" />
+          <e p="20190623113503_SeedData.Designer.cs" t="Include" />
+          <e p="20190623143237_ForeignKeyFix.cs" t="Include" />
+          <e p="20190623143237_ForeignKeyFix.Designer.cs" t="Include" />
+          <e p="GateRead" t="Include">
+            <e p="20190626120649_Initial.cs" t="Include" />
+            <e p="20190626120649_Initial.Designer.cs" t="Include" />
+            <e p="GateReadContextModelSnapshot.cs" t="Include" />
+          </e>
+          <e p="GateWriteContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="CheckInCounterModel.cs" t="Include" />
+          <e p="FlightCheckInCounterModel.cs" t="Include" />
+          <e p="FlightGateModel.cs" t="Include" />
+          <e p="GateModel.cs" t="Include" />
+          <e p="QueueReceivedModel.cs" t="Include" />
+          <e p="ResponseModel.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="GateManagement.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="out" t="Include">
+          <e p="appsettings.Development.json" t="Include" />
+          <e p="appsettings.json" t="Include" />
+          <e p="GateManagement.deps.json" t="Include" />
+          <e p="GateManagement.dll" t="Include" />
+          <e p="GateManagement.pdb" t="Include" />
+          <e p="GateManagement.runtimeconfig.json" t="Include" />
+          <e p="RabbitMQ.Client.dll" t="Include" />
+          <e p="web.config" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="CheckInCounterRepository.cs" t="Include" />
+          <e p="GateRepository.cs" t="Include" />
+        </e>
+        <e p="Scheduler" t="Include">
+          <e p="DatabaseSynchronizeTask.cs" t="Include" />
+          <e p="ScheduledProcessor.cs" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="CheckInCounterQueueHostedService.cs" t="Include" />
+          <e p="GateQueueHostedService.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

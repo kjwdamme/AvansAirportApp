@@ -1,0 +1,14 @@
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/obj/Release/netcoreapp2.2/FlightManagement.csprojAssemblyReference.cache
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/obj/Release/netcoreapp2.2/FlightManagement.csproj.CoreCompileInputs.cache
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/obj/Release/netcoreapp2.2/FlightManagement.RazorAssemblyInfo.cache
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/obj/Release/netcoreapp2.2/FlightManagement.RazorAssemblyInfo.cs
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/obj/Release/netcoreapp2.2/FlightManagement.AssemblyInfoInputs.cache
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/obj/Release/netcoreapp2.2/FlightManagement.AssemblyInfo.cs
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/obj/Release/netcoreapp2.2/FlightManagement.RazorTargetAssemblyInfo.cache
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/obj/Release/netcoreapp2.2/FlightManagement.dll
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/obj/Release/netcoreapp2.2/FlightManagement.pdb
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/bin/Release/netcoreapp2.2/FlightManagement.deps.json
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/bin/Release/netcoreapp2.2/FlightManagement.runtimeconfig.json
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/bin/Release/netcoreapp2.2/FlightManagement.runtimeconfig.dev.json
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/bin/Release/netcoreapp2.2/FlightManagement.dll
+/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/FlightManagement/bin/Release/netcoreapp2.2/FlightManagement.pdb

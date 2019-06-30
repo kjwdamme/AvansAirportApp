@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/GateManagement.csproj": {}
+  },
+  "projects": {
+    "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/GateManagement.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/GateManagement.csproj",
+        "projectName": "GateManagement",
+        "projectPath": "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/GateManagement.csproj",
+        "packagesPath": "/Users/kjwdamme/.nuget/packages/",
+        "outputPath": "/Users/kjwdamme/School/Jaar3/Periode4/SolutionArchitecture/AvansAirportApp/GateManagement/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/kjwdamme/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "EFCore.BulkExtensions": {
+              "target": "Package",
+              "version": "[2.4.7, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
+            "ncrontab": {
+              "target": "Package",
+              "version": "[3.3.1, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

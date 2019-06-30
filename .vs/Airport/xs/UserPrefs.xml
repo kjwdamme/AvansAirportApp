@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{57B8E8E6-B97A-40B9-9B84-22CAC7BC6524}|Default">
+  <MonoDevelop.Ide.ItemProperties.FlightManagement PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FlightManagement/Controllers/AirlineController.cs">
+    <Files>
+      <File FileName="FlightManagement/Controllers/AirlineController.cs" Line="29" Column="49" />
+      <File FileName="../../../../../../../usr/local/share/dotnet/sdk/2.2.300/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Sdk.targets" Line="105" Column="24" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Airport" expanded="True">
+            <Node name="FlightManagement" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="FlightController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
