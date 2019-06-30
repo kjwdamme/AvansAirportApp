@@ -1,9 +1,10 @@
 ATC = require('../models/commandModel');
 var mongoose = require("mongoose");
+const env = require('../config/env');
 
 exports.new = function (req, res) {
-    mongoose.connect('mongodb://Admin:Password123@ds343217.mlab.com:43217/writeatc', { useNewUrlParser: true });
-   
+    // mongoose.connect('mongodb://Admin:Password123@ds343217.mlab.com:43217/writeatc', { useNewUrlParser: true });
+    mongoose.connect(env.env.mongoWritehost, { useNewUrlParser: true})
 
     var db = mongoose.connection;
 

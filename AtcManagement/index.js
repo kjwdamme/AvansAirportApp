@@ -7,6 +7,10 @@ let atcQueries = require("./routes/queryRoutes");
 ATC = require("./models/commandModel");
 var queue = require('./queue/receive');
 var cloneJob = require('./queue/clone');
+let env = require('./config/env');
+
+
+module.exports = {};
 
 
 app.use(bodyParser.urlencoded({
@@ -14,6 +18,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
+app.use(bodyParser.json({
+    type: ' application/vnd.api+json'
+}));
 
 // mongoose.connect('mongodb://localhost/atc', { useNewUrlParser: true });
 
@@ -22,27 +29,10 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 1010;
 
 app.use('/command', atcCommands)
-
 app.use('/query', atcQueries)
 
-app.listen(port, function () {
-    console.log("Running on port " + port);
-    // cloneJob.scheduleCloneJob();
-    // queue.receive();
+app.listen(env.env.port, function () {
+    console.log("Running on port " + env.env.port);
+    //cloneJob.scheduleCloneJob();
+     queue.receive();
 });
-
-
-
-// Automatically clone read/write DB (every hour)
-// Via mongoose or else native Mongo
-// Via raw admin command?
-
-// Right schema's
-
-// More routes
-
-// Working reads
-
-// Treat objects like events
-
-// Apply to bookings API
