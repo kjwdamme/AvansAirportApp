@@ -13,19 +13,19 @@ services:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
 
-  invoicingmanagement:
-    image: gompermike/invoicingmanagement:latest
-    depends_on:
-     - rabbitmq
-     - waitforrabbit
-    build:
-      context: .
-      dockerfile: /invoicing/Dockerfile
-    ports: 
-     - "8080"
+  # invoicingmanagement:
+  #   image: tolgaelbir/invoicingmanagement:latest
+  #   depends_on:
+  #    - rabbitmq
+  #    - waitforrabbit
+  #   build:
+  #     context: .
+  #     dockerfile: /invoicing/Dockerfile
+  #   ports: 
+  #    - "8080"
 
   bookingmanagement:
-    image: gompermike/bookingmanagement:latest
+    image: tolgaelbir/bookingmanagement:latest
     depends_on:
       - rabbitmq
       - waitforrabbit
@@ -35,37 +35,37 @@ services:
     ports:
       - "9090"
 
-  atcmanagement:
-    image: gompermike/atcmanagement:latest
-    depends_on:
-      - rabbitmq
-      - waitforrabbit
-    ports:
-      - "1010"    
+  # atcmanagement:
+  #   image: gompermike/atcmanagement:latest
+  #   depends_on:
+  #     - rabbitmq
+  #     - waitforrabbit
+  #   ports:
+  #     - "1010"    
 
-  bordersecuritymanagement:
-    image: gompermike/bordersecuritymanagement:latest
-    depends_on:
-      - rabbitmq
-      - waitforrabbit
-    ports:
-      - "2020"
+  # bordersecuritymanagement:
+  #   image: gompermike/bordersecuritymanagement:latest
+  #   depends_on:
+  #     - rabbitmq
+  #     - waitforrabbit
+  #   ports:
+  #     - "2020"
 
   checkinmanagement:
-    image: gompermike/checkinmanagement:latest
+    image: tolgaelbir/checkinmanagement:latest
     depends_on:
       - rabbitmq
       - waitforrabbit
     ports:
       - "3030"
 
-  securitymanagement:
-    image: gompermike/securitymanagement:latest
-    depends_on:
-      - rabbitmq
-      - waitforrabbit
-    ports:
-      - "4040"
+  # securitymanagement:
+  #   image: gompermike/securitymanagement:latest
+  #   depends_on:
+  #     - rabbitmq
+  #     - waitforrabbit
+  #   ports:
+  #     - "4040"
 
   waitforrabbit:
     image: dadarek/wait-for-dependencies
