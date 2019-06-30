@@ -57,7 +57,7 @@ module.exports = {
                                 checkin.save(function (err) {
                                     if(err) return console.error(err);
 
-                                    // commandController.sendInvoice(invoice);
+                                    commandController.sendCheckInNotice(checkin);
 
                                     mongoose.connection.close();
                                     mongoose.disconnect();

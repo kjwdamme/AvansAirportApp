@@ -11,4 +11,7 @@ router.get('/', function (req, res) {
 router.route('/checkins')
     .post(commandController.new);
 
-module.exports = router;
+router.route('/checkins/:id')
+    .post(commandController.checkin)
+
+module.exports = router; 
