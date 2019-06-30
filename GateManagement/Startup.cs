@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GateManagement.Entities;
+﻿using GateManagement.Entities;
 using GateManagement.Repositories;
+using GateManagement.Scheduler;
 using GateManagement.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Hosting;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace GateManagement
 {
@@ -31,17 +27,20 @@ namespace GateManagement
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            string writeConnection = @"Server=(localdb)\mssqllocaldb;Database=GateWriteDatabase;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<GateWriteContext>
-                (options => options.UseSqlServer(writeConnection));
+            var host = Configuration["DBHOST"] ?? "sqldatabase";
+            var port = Configuration["DBPORT"] ?? "1433";
+            var user = Configuration["DBUSER"] ?? "sa";
+            var password = Configuration["DBPASSWORD"] ?? "Atleast8characters!";
 
-            string readConnection = @"Server=(localdb)\mssqllocaldb;Database=GateReadDatabase;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<GateWriteContext>
+                (options => options.UseSqlServer($"Server={host},{port};User={user};Password={password};Database=GateWriteDatabase;Trusted_Connection=False;"));
+
             services.AddDbContext<GateReadContext>
-                (options => options.UseSqlServer(readConnection));
+                (options => options.UseSqlServer($"Server={host},{port};User={user};Password={password};Database=GateReadDatabase;Trusted_Connection=False;"));
 
             services.AddTransient<GateRepository>();
             services.AddTransient<CheckInCounterRepository>();
-            //services.AddTransient<QueueReceiver>();
+            services.AddSingleton<IHostedService, DatabaseSynchronizeTask>();
             services.AddHostedService<GateQueueHostedService>();
             services.AddHostedService<CheckInCounterQueueHostedService>();
         }
@@ -61,6 +60,12 @@ namespace GateManagement
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                scope.ServiceProvider.GetService<GateWriteContext>().MigrateDb();
+                scope.ServiceProvider.GetService<GateReadContext>().MigrateDb();
+            }    
         }
     }
 }

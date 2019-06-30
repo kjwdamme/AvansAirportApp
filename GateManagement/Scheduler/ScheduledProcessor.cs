@@ -1,11 +1,11 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using FlightManagement.BackgroundService;
+using GateManagement.BackgroundService;
 using Microsoft.Extensions.DependencyInjection;
 using NCrontab;
 
-namespace FlightManagement.Scheduler
+namespace GateManagement.Scheduler
 {
     public abstract class ScheduledProcessor : ScopedProcessor
     {

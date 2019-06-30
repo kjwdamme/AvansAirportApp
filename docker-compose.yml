@@ -22,6 +22,33 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Atleast8characters!
 
+  sqlgatedatabase:
+    image: microsoft/mssql-server-linux
+    restart: always
+    volumes: 
+      - datafiles:/var/lib/sqldb
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Atleast8characters!
+
+  gatemanagement:
+    image: avansairportapp/gatemanagement
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+      - sqlgatedatabase
+    build:
+      context: .
+      dockerfile: GateManagement/Dockerfile
+    ports:
+      - "6001"
+    restart: always
+    environment: 
+      - DBHOST=sqlgatedatabase
+      - DBPORT=1433
+      - DBUSER=sa
+      - DBPASSWORD=Atleast8characters!
+
   waitforrabbit:
     image: dadarek/wait-for-dependencies
     depends_on:
@@ -45,6 +72,60 @@ services:
       - DBPORT=1433
       - DBUSER=sa
       - DBPASSWORD=Atleast8characters!
+
+  invoicingmanagement:
+    image: avansairport/invoicingmanagement:latest
+    depends_on:
+     - rabbitmq
+     - waitforrabbit
+    build:
+      context: .
+      dockerfile: invoicing/Dockerfile
+    ports: 
+     - "8080"
+
+  bookingmanagement:
+    image: avansairport/bookingmanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    build:
+      context: .
+      dockerfile: Booking/Dockerfile
+    ports:
+      - "9090"
+
+  atcmanagement:
+    image: avansairport/atcmanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    ports:
+      - "1010"    
+
+  bordersecuritymanagement:
+    image: avansairport/bordersecuritymanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    ports:
+      - "2020"
+
+  checkinmanagement:
+    image: avansairport/checkinmanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    ports:
+      - "3030"
+
+  securitymanagement:
+    image: avansairport/securitymanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    ports:
+      - "4040"
 
 volumes:
   rabbitmqdata:

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace FlightManagement.BackgroundService
+namespace GateManagement.BackgroundService
 {
     public abstract class ScopedProcessor : BackgroundService
     {

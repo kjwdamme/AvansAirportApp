@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace GateManagement.Services
 {
-    public class CheckInCounterQueueHostedService : BackgroundService
+    public class CheckInCounterQueueHostedService : Microsoft.Extensions.Hosting.BackgroundService
     {
         private IConnection _connection;
         private IModel _counterChannel;
@@ -28,7 +28,7 @@ namespace GateManagement.Services
 
         private void InitRabbitMQ()
         {
-            var factory = new ConnectionFactory { HostName = "localhost" };
+            var factory = new ConnectionFactory { HostName = "rabbitmq" };
 
             // create connection  
             _connection = factory.CreateConnection();

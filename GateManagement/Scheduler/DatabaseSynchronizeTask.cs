@@ -2,11 +2,11 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using EFCore.BulkExtensions;
-using FlightManagement.Entities;
+using GateManagement.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FlightManagement.Scheduler
+namespace GateManagement.Scheduler
 {
     
     public class DatabaseSynchronizeTask : ScheduledProcessor
@@ -19,22 +19,22 @@ namespace FlightManagement.Scheduler
 
         public override Task ProcessInScope(IServiceProvider serviceProvider)
         {
-            Console.WriteLine("Synchronizing databases...");
+            Console.WriteLine("Synchronizing gate databases...");
 
-            var writeContext = serviceProvider.GetRequiredService<FlightWriteContext>();
-            var readContext = serviceProvider.GetRequiredService<FlightReadContext>();
+            var writeContext = serviceProvider.GetRequiredService<GateWriteContext>();
+            var readContext = serviceProvider.GetRequiredService<GateReadContext>();
             
-            readContext.BulkInsertOrUpdate(writeContext.Planes.ToList(), 
+            readContext.BulkInsertOrUpdate(writeContext.Gates.ToList(), 
                 new BulkConfig { PreserveInsertOrder = true });
-            readContext.BulkInsertOrUpdate(writeContext.Airlines.ToList(), 
+            readContext.BulkInsertOrUpdate(writeContext.CheckInCounters.ToList(), 
                 new BulkConfig { PreserveInsertOrder = true });
-            readContext.BulkInsertOrUpdate(writeContext.Flights.ToList(), 
+            readContext.BulkInsertOrUpdate(writeContext.FlightCheckInCounters.ToList(), 
                 new BulkConfig { PreserveInsertOrder = true });
-            readContext.BulkInsertOrUpdate(writeContext.AirlinePlanes.ToList(),
+            readContext.BulkInsertOrUpdate(writeContext.FlightGates.ToList(),
                 new BulkConfig {PreserveInsertOrder = true});
             readContext.SaveChanges();
 
-            Console.WriteLine("Finished synchronizing!");
+            Console.WriteLine("Finished synchronizing gate databases!");
 
             return Task.CompletedTask;
         }

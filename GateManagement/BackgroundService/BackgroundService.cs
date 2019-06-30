@@ -4,13 +4,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FlightManagement.BackgroundService
+namespace GateManagement.BackgroundService
 {
     public abstract class BackgroundService : IHostedService
     {
         private Task _executingTask;
-        private readonly CancellationTokenSource _stoppingCts =
-                                                       new CancellationTokenSource();
+        private readonly CancellationTokenSource _stoppingCts = new CancellationTokenSource();
 
         public virtual Task StartAsync(CancellationToken cancellationToken)
         {
