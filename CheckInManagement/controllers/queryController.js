@@ -2,13 +2,13 @@ checkIn = require('../models/queryModel');
 const mongoose = require('mongoose');
 const env = require('../config/env');
 
-exports.index = function(req, res) {
+exports.index = function (req, res) {
     mongoose.connect(env.env.mongoReadHost, { useNewUrlParser: true });
     db = mongoose.connection;
 
     db.once('open', function callback() {
         checkIn.get(function (err, checkins) {
-            if(err) {
+            if (err) {
                 res.json({
                     status: 'error',
                     message: err,
@@ -25,14 +25,14 @@ exports.index = function(req, res) {
     });
 };
 
-exports.viewbyId = function(req, res) {
+exports.viewbyId = function (req, res) {
     mongoose.connect(env.env.mongoReadHost);
     db = mongoose.connection;
 
     db.once('open', function callback() {
         checkIn.findById(req.params.checkin_id, function (err, checkin) {
             if (err)
-             res.send(err);
+                res.send(err);
             res.json({
                 status: 'succes',
                 message: 'checkin retrieved',
