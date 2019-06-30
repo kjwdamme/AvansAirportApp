@@ -1,4 +1,4 @@
-const CheckIn = require('../models/commandModel');
+checkIn = require('../models/commandModel');
 const env = require('../config/env');
 const mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
@@ -8,11 +8,11 @@ exports.new = function (req, res) {
     var db = mongoose.connection;
 
     db.once('open', function callback() {
-        var checkin = new CheckIn();
+        var checkin = new checkIn();
 
         checkin.passenger = req.body.passenger;
         checkin.flight = req.body.flight;
-        checkin.checkedIn = req.body.checkedIn;
+        checkin.email = req.body.email;
         checkin.checkedInDate = req.body.checkedInDate;
 
         checkin.save(function (err) {
@@ -70,7 +70,7 @@ exports.checkin = function (req, res) {
                 res.send(err);
             }
 
-            var checkin = new CheckIn();
+            var checkin = new checkIn();
             checkin.passenger = data.passenger;
             checkin.flight = data.flight;
             checkin.email = data.email;

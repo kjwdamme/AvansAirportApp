@@ -1,5 +1,6 @@
 var amqp = require('amqplib/callback_api');
 checkIn = require('../models/commandModel');
+const env = require('../config/env');
 var commandController = require('../controllers/commandController');
 var mongoose = require('mongoose');
 
@@ -30,7 +31,7 @@ module.exports = {
 
                     channel.consume('bookingqueue3', function (msg) {
                         if (msg.content) {
-                            mongoose.connect('mongodb://admin:admin123@ds343217.mlab.com:43217/writecheckin', { useNewUrlParser: true });
+                            mongoose.connect(env.env.mongoWritehost, { useNewUrlParser: true });
 
                             var db = mongoose.connection;
 
@@ -50,7 +51,6 @@ module.exports = {
                                     Destination: "Turkey",
                                     IsArriving: false
                                 }],
-                                checkin.checkedIn = false
 
                                 console.log(checkin);
 

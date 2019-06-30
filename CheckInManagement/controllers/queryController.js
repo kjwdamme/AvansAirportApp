@@ -25,20 +25,19 @@ exports.index = function(req, res) {
     });
 };
 
-exports.view = function(req, res) {
+exports.viewbyId = function(req, res) {
     mongoose.connect(env.env.mongoReadHost);
     db = mongoose.connection;
 
     db.once('open', function callback() {
         checkIn.findById(req.params.checkin_id, function (err, checkin) {
-            if (err) {
+            if (err)
              res.send(err);
-            }
             res.json({
                 status: 'succes',
                 message: 'checkin retrieved',
                 data: checkin
-            })
+            });
             mongoose.connection.close();
             mongoose.disconnect();
         });

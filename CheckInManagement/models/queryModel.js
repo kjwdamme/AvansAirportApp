@@ -49,7 +49,8 @@ const queryModel = new Schema({
         required: true
     },
     checkedIn: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     checkedInDate: {
         type: Date,

@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 router.route('/checkins')
     .get(queryController.index);
 router.route('/checkins/:checkin_id')
-    .get(queryController.view);
+    .get(queryController.viewbyId);
 
 module.exports = router;
 
