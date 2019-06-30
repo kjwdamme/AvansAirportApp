@@ -13,7 +13,7 @@ router.route('/atcs')
     .get(queryController.index);
 
 router.route('/atcs/:atc_id')
-    .get(queryController.view);
+    .get(queryController.viewById);
  
     module.exports = router;
 

@@ -5,5 +5,3 @@ node_modules
 .sonar/
 coverage/
 package-lock.json
-.vs
-.git
