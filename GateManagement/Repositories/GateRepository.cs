@@ -28,9 +28,9 @@ namespace GateManagement.Repositories
                 ClosingTime = closingTime,
                 OpeningTime = openingTime,
                 FlightId = flightId,
-                GateNumber = this.ReadContext.Gates.ToList()[rand.Next(this.WriteContext.Gates.Count())].Number
+                GateNumber = this.WriteContext.Gates.ToList()[rand.Next(this.WriteContext.Gates.Count())].Number
             });
-            this.ReadContext.SaveChanges();
+            this.WriteContext.SaveChanges();
         }
 
         public IEnumerable<FlightGate> GetFlightGates()
