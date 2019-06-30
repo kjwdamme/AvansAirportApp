@@ -1,6 +1,7 @@
 var amqp = require('amqplib/callback_api');
 WriteModel = require('../models/writeModel');
 var mongoose = require('mongoose');
+ReadModel = require("../models/readModel");
 
 module.exports = {
     receive: function () {
@@ -12,52 +13,73 @@ module.exports = {
                 if (error1) {
                     throw error1;
                 }
+                var exchange = 'testbookings';
 
-                var queue = 'bookings';
-
-                channel.assertQueue(queue, {
+                channel.assertExchange(exchange, 'fanout', {
                     durable: false
                 });
 
-                console.log(" [*] Waiting for messages in %s.", queue);
+                channel.assertQueue('bordersecuritybookingqueue', {
+                    exclusive: false
+                }, function (error2, q) {
+                    if (error2) {
+                        throw error2;
+                    }
+                    console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
+                    channel.bindQueue('bordersecuritybookingqueue', exchange, '');
 
-                channel.consume(queue, function (msg) {
-                    console.log(" [x] Received message...");
-                    var booking = JSON.parse(msg.content.toString());
-                    delete booking._id;
+                    channel.consume('bordersecuritybookingqueue', function (msg) {
+                        if (msg.content) {
+                            mongoose.connect('mongodb://User:User123@ds026658.mlab.com:26658/bordersecurity_write', { useNewUrlParser: true });
 
-                    mongoose.connect('mongodb://User:User123@ds026658.mlab.com:26658/bordersecurity_write', { useNewUrlParser: true });
+                            var db = mongoose.connection;
 
-                    var db = mongoose.connection;
+                            var booking = JSON.parse(msg.content.toString());
 
-                    db.once('open', function callback() {
-                        var itemsProcessed = 0;
+                            db.once('open', function callback() {
 
-                        booking.passenger.forEach(element => {
-                            var writeModel = new WriteModel();
-                            writeModel.firstName = element.firstName;
-                            writeModel.flightID = booking.flightID;
-                            writeModel.lastName = element.lastName;
-                            writeModel.age = element.age;
-                            writeModel.gender = element.gender;
-                            writeModel.save(function (err) {
-                                if (err) console.log(err);
-                                console.log("Firstname gelukt");
-                                console.dir(element);
-                                itemsProcessed++;
+
+                                booking.passenger.forEach(element => {
+                                    ReadModel.find({ firstName: element.firstName, lastName: element.lastName }, function (err, events) {
+                                        // console.dir(events);
+                                        try {
+                                            var x = events[0].firstName
+                                            console.dir(events[0].firstName);
+                                        } catch (err) {
+                                            console.log("Catch Test");
+                                            var writeModel = new WriteModel();
+                                            writeModel.firstName = element.firstName;
+                                            writeModel.flightID = booking.flightID;
+                                            writeModel.lastName = element.lastName;
+                                            writeModel.age = element.age;
+                                            writeModel.gender = element.gender;
+                                            writeModel.save(function (err) {
+                                                if (err) console.log(err);
+                                                console.log("Firstname gelukt");
+                                                console.dir(element);
+
+                                                setTimeout(function () {
+                                                    console.log("processed all items");
+                                                    mongoose.connection.close();
+                                                    mongoose.disconnect();
+                                                    console.log("Disconnection succesfull");
+                                                }, 200 * booking.passenger.Length);
+                                            });
+                                        }
+                                    });
+
+
+
+                                });
+
+
                             });
-                            if (itemsProcessed == booking.passenger.Length) {
-                                console.log("processed all items");
-                                mongoose.connection.close();
-                                mongoose.disconnect();
-                            }
+                        }
+                    }, {
+                            noAck: true
                         });
-                    });
-
-                }, {
-                        noAck: true
-                    });
+                });
             });
         });
     }
-};
+}

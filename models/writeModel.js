@@ -23,8 +23,8 @@ var bordersecuritySchema = mongoose.Schema({
         },
 });
 
-var WriteModel = module.exports = mongoose.model('writeModel', bordersecuritySchema);
+var WriteModel = module.exports = mongoose.model('BorderSecurityModels', bordersecuritySchema);
 
-module.exports.get = function (callback, limit) {
-    WriteModel.find(callback).limit(limit);
-}
+// module.exports.get = function (callback, limit) {
+//     WriteModel.find(callback).limit(limit);
+// }

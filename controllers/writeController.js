@@ -1,4 +1,4 @@
-WriteModel = require('../models/writeModel');
+BorderSecurityModel = require('../models/writeModel');
 var mongoose = require('mongoose');
 
 exports.new = function (req, res) {
@@ -7,14 +7,18 @@ exports.new = function (req, res) {
     var db = mongoose.connection;
 
     db.once('open', function callback() {
-        var writeModel = new WriteModel();
+        var borderSecurityModel = new BorderSecurityModel();
 
-        writeModel.message = req.body.message;
+        borderSecurityModel.firstName = req.body.firstName;
+        borderSecurityModel.lastName = req.body.lastName;
+        borderSecurityModel.age = req.body.age;
+        borderSecurityModel.gender = req.body.gender;
+        borderSecurityModel.flightID = req.body.flightID;
 
-        writeModel.save(function (err) {
+        borderSecurityModel.save(function (err) {
             res.json({
-                message: 'New WriteModel created!',
-                data: writeModel
+                message: 'New BorderSecurityModel created!',
+                data: borderSecurityModel
             });
 
             mongoose.connection.close();
