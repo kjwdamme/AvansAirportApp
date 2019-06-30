@@ -41,9 +41,24 @@ module.exports = {
                             db.once('open', function callback() {
                                 var atc = new ATC()
 
-                                atc.flight = flight.flight;
-                                atc.landingstrip = atc.landingstrip;
-                                atc.permission = atc.permission;
+                                atc.flight = [{
+                                    id: 11,
+                                    planeId: 11,
+                                    airlineId: 11,
+                                    airlineModel: "vliegtuig",
+                                    planeModel: "Model",
+                                    planeName: "Harry",
+                                    departureDate: "01-01-2019",
+                                    arrivalDate: "01-01-2019",
+                                    durationMinutes: 111,
+                                    delayMinutes: 5,
+                                    destination: "Hoogerheide",
+                                    isArriving: true
+                                }] ;
+                                atc.landingstrip = 6;
+                                atc.permission = true;
+
+
 
                                 console.log(atc);
 
