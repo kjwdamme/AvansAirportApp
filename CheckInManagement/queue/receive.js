@@ -2,6 +2,7 @@ var amqp = require('amqplib/callback_api');
 checkIn = require('../models/commandModel');
 var commandController = require('../controllers/commandController');
 var mongoose = require('mongoose');
+const axios = require('axios');
 
 module.exports = {
     receive: function () {
@@ -39,23 +40,23 @@ module.exports = {
                             db.once('open', function callback() {
                                 flightId = booking.flightID
                                 console.log("this is the flight id: " + flightId)
-                                axios.get('http://flightmanagement/api/flights/{flightId}')
+                                axios.get('http://flightmanagement:5001/api/flights/' + booking.flightID)
                                     .then(response => {
                                         var checkin = new checkIn()
-
+                                        console.dir("response flight:" + response.data);
                                         checkin._id = booking._id;
                                         checkin.passenger = booking.passenger;
                                         checkin.email = booking.email;
                                         checkin.flight = [{
-                                            PlaneName: response.planeName,
-                                            PlaneId: response.planeModel.planeId,
-                                            AirlineId: response.airlineModel.airlineId,
-                                            DepartureDate: response.departureDate,
-                                            Delay: response.delayMinutes,
-                                            Destination: response.destination
+                                            PlaneName: response.data.planeModel.name,
+                                            PlaneId: response.data.planeModel.id,
+                                            AirlineId: response.data.airlineModel.id,
+                                            DepartureDate: response.data.departureDate,
+                                            Delay: response.data.delayMinutes,
+                                            Destination: response.data.destination
                                         }],
 
-                                            console.log(checkin);
+                                            console.log("this is the result: " + checkin);
 
                                         checkin.save(function (err) {
                                             if (err) return console.error(err);

@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
 
 var commandController = require('../controllers/commandController');
 
-router.route('/atcs')
+router.route('/atcs/:flightId')
     .post(commandController.new);
  
     module.exports = router;

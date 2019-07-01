@@ -2,29 +2,17 @@ var mongoose = require('mongoose');
 
 var ATCSchema = mongoose.Schema({
     flight: [{
-        id:{
-            type: Number
-        },
         planeId: {
             type: Number
         },
         airlineId: {
-           type: Number,
-        },
-        airlineModel:{
-            type: String,
-        },
-        planeModel:{
-            type: String
+            type: Number,
         },
         planeName:{
             type: String
         },
         departureDate: {
             type: Date,
-        },
-        arrivalDate: {
-            type: Date
         },
         durationMinutes:{
             type: Number
@@ -34,15 +22,12 @@ var ATCSchema = mongoose.Schema({
         },
         destination: {
             type: String,
-        },
-        isArriving: {
-          type: Boolean,
-        } 
+        }
     }],
     landingstrip: {
         type: Number
     },
-    permisssion:{
+    permission:{
         type: Boolean
     }
 });

@@ -17,7 +17,6 @@ namespace GateManagement.Entities
         public DateTime OpeningTime { get; set; }
         [Required]
         public DateTime ClosingTime { get; set; }
-
         public Gate Gate { get; set; }
         [Required]
         [ForeignKey("Gate")]

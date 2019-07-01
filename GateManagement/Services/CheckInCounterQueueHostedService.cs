@@ -59,7 +59,7 @@ namespace GateManagement.Services
                     // Received message
                     var content = Encoding.UTF8.GetString(ea.Body);
 
-                    QueueReceivedModel contentModel = JsonConvert.DeserializeObject<QueueReceivedModel>(content);
+                    EventReceivedModel contentModel = JsonConvert.DeserializeObject<EventReceivedModel>(content);
 
                     counterRepository.AssignCheckInCounter(contentModel.FlightId, contentModel.OpeningTime, contentModel.ClosingTime);
                 }

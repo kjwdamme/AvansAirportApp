@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GateManagement.Models
 {
-    public class QueueReceivedModel
+    public class EventReceivedModel
     {
         public int FlightId { get; set; }
         public DateTime OpeningTime { get; set; }
