@@ -27,6 +27,7 @@ namespace FlightManagement.Repositories
                 DepartureDate = flightModel.DepartureDate,
                 Destination = flightModel.Destination,
                 DurationMinutes = flightModel.DurationMinutes,
+                Cost = flightModel.Cost,
                 PlaneId = this.WriteContext.Planes.Where(p => p.Name == flightModel.PlaneName).Select(p => p.Id).SingleOrDefault()
             };
 
@@ -66,7 +67,8 @@ namespace FlightManagement.Repositories
                     },
                     Destination = flight.Destination,
                     DelayMinutes = flight.DelayMinutes,
-                    DepartureDate = flight.DepartureDate
+                    DepartureDate = flight.DepartureDate,
+                    Cost = flight.Cost
                 })
                 .SingleOrDefault();
         }

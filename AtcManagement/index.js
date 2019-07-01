@@ -22,14 +22,18 @@ app.use(bodyParser.json({
     type: ' application/vnd.api+json'
 }));
 
-// mongoose.connect('mongodb://localhost/atc', { useNewUrlParser: true });
-
-// var db = mongoose.connection;
-
-var port = process.env.PORT || 1010;
+app.set('port', env.env.port);
+app.set('env', 'development');
 
 app.use('/command', atcCommands)
 app.use('/query', atcQueries)
+
+app.use('*', function (req, res){
+    res.status(400);
+    res.json({
+        'error': 'URL niet beschikbaar'
+    });
+});
 
 app.listen(env.env.port, function () {
     console.log("Running on port " + env.env.port);

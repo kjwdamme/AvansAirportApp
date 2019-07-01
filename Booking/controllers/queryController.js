@@ -68,7 +68,7 @@ exports.viewByEmail = function (req, res) {
 };
 
 exports.viewFlightStatus = function (req, res) {
-    mongoose.connect('mongodb://admin:Admin0@ds046037.mlab.com:46037/readbooking', { useNewUrlParser: true });
+    mongoose.connect('mongodb://admin:Admin0@ds040837.mlab.com:40837/writebooking', { useNewUrlParser: true });
 
     db = mongoose.connection;
 
