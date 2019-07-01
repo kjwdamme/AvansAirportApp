@@ -25,6 +25,9 @@ const commandModel = new Schema({
         }
     }],
     flight: [{
+        PlaneName: {
+            type: String,
+        },
         PlaneId: {
             type: Number,
         },
@@ -39,9 +42,6 @@ const commandModel = new Schema({
         },
         Destination: {
             type: String,
-        },
-        IsArriving: {
-            type: Boolean,
         }
     }],
     email: {

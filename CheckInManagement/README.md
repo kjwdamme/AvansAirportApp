@@ -13,8 +13,7 @@ body:
 		"AirlineId": 5,
 		"DepartureDate": "5-5-2019",
 		"Delay": 5,
-		"Destination": "Turkey",
-		"IsArriving": 1
+		"Destination": "Turkey"
 	}],
 	"checkedIn": 1,
 	"checkedInDate": 1
