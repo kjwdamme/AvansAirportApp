@@ -37,22 +37,6 @@ namespace FlightManagement.Repositories
             return null;
         }
 
-        public IEnumerable<AirlineModel> GetAirlines()
-        {
-            return this.ReadContext.Airlines
-                .Select(a => new AirlineModel
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    BookingInformation = a.Flights.Select(f => new BookingInformationModel
-                    {
-                        FlightId = f.FlightId,
-                        MaxBagageWeightKilograms = f.Plane.MaxBaggageWeight,
-                        MaxPassengers = f.Plane.MaxPassengers
-                    })
-                });
-        }
-
         public IEnumerable<AirlineModel> GetAirlineFlightInformation()
         {
             return this.ReadContext.Airlines
@@ -65,7 +49,16 @@ namespace FlightManagement.Repositories
                         Id = f.FlightId,
                         Destination = f.Destination,
                         DurationMinutes = f.DurationMinutes,
-                        Cost = f.Cost
+                        Cost = f.Cost,
+                        DelayMinutes = f.DelayMinutes,
+                        DepartureDate = f.DepartureDate,
+                        PlaneModel = new PlaneModel
+                        {
+                            Id = f.Plane.Id,
+                            MaxBaggageWeight = f.Plane.MaxBaggageWeight,
+                            MaxPassengers = f.Plane.MaxPassengers,
+                            Name = f.Plane.Name
+                        }
                     })
                 });
         }

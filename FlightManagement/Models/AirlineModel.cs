@@ -9,8 +9,6 @@ namespace FlightManagement.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public IEnumerable<AirlinePlaneModel> AirlinePlaneModels { get; set; }
         public IEnumerable<FlightModel> FlightModels { get; set; }
-        public IEnumerable<BookingInformationModel> BookingInformation { get; set; }
     }
 }

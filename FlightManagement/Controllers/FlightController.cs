@@ -42,7 +42,7 @@ namespace FlightManagement.Controllers
             FlightModel addedFlight = this.Repository.AddFlight(id, flightModel);
 
             // Assigning a gate to the flight in the Gate Management service
-            this.Queue.SendQueue("GateQueue", new QueueModel
+            this.Queue.SendQueue("GateQueue", new FlightCreatedEvent
             {
                 FlightId = addedFlight.Id,
                 //Gate closes 30 minutes before departure
@@ -51,7 +51,7 @@ namespace FlightManagement.Controllers
                 OpeningTime = addedFlight.DepartureDate.AddHours(-2)
             });
 
-            this.Queue.SendQueue("CheckInCounterQueue", new QueueModel
+            this.Queue.SendQueue("CheckInCounterQueue", new FlightCreatedEvent
             {
                 FlightId = addedFlight.Id,
                 //Check in counter closes 1 hour before departure
@@ -66,6 +66,12 @@ namespace FlightManagement.Controllers
                 Message = "Added flight, assigned gate and assigned check in counter",
                 Success = true
             });
+        }
+
+        [HttpGet("flights/{id}")]
+        public IActionResult GetFlight(int id)
+        {
+            return this.Ok(this.Repository.GetFlight(id));
         }
     }
 }

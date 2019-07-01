@@ -14,6 +14,7 @@ namespace FlightManagement.Models
         public string Destination { get; set; }
         public double Cost { get; set; }
         public AirlineModel AirlineModel { get; set; }
+        public int AirlineId { get; set; }
         public int PlaneId { get; set; }
         public PlaneModel PlaneModel { get; set; }
         public string PlaneName { get; set; }
