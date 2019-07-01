@@ -22,5 +22,5 @@ app.use('/query', invoiceQueries)
 app.listen(port, function () {
     console.log("Running on port " + port);
     cloneJob.scheduleCloneJob();
-    queue.receive();
+    // queue.receive();
 });

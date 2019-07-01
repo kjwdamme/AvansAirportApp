@@ -9,49 +9,37 @@ namespace FlightManagement.Repositories
 {
     public class AirlineRepository
     {
-        public AirlineRepository(FlightWriteContext entities)
+        public AirlineRepository(FlightWriteContext writeContext, FlightReadContext readContext)
         {
-            this.Entities = entities;
+            this.WriteContext = writeContext;
+            this.ReadContext = readContext;
         }
 
-        public FlightWriteContext Entities { get; }
+        public FlightWriteContext WriteContext { get; }
+
+        public FlightReadContext ReadContext { get; }
 
         public AirlineModel AddAirline(AirlineModel airline)
         {
-            if (!this.Entities.Airlines.Any(a => a.Name == airline.Name))
+
+            if (!this.WriteContext.Airlines.Any(a => a.Name == airline.Name))
             {
-                this.Entities.Airlines.Add(new Airline
+                this.WriteContext.Airlines.Add(new Airline
                 {
                     Name = airline.Name,
                     Flights = null,
                     AirlinePlanes = null
                 });
-                this.Entities.SaveChanges();
+                this.WriteContext.SaveChanges();
                 return airline;
             }
 
             return null;
         }
 
-        public IEnumerable<AirlineModel> GetAirlines()
-        {
-            return this.Entities.Airlines
-                .Select(a => new AirlineModel
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    BookingInformation = a.Flights.Select(f => new BookingInformationModel
-                    {
-                        FlightId = f.FlightId,
-                        MaxBagageWeightKilograms = f.Plane.MaxBaggageWeight,
-                        MaxPassengers = f.Plane.MaxPassengers
-                    })
-                });
-        }
-
         public IEnumerable<AirlineModel> GetAirlineFlightInformation()
         {
-            return this.Entities.Airlines
+            return this.ReadContext.Airlines
                 .Select(a => new AirlineModel
                 {
                     Id = a.Id,
@@ -61,27 +49,36 @@ namespace FlightManagement.Repositories
                         Id = f.FlightId,
                         Destination = f.Destination,
                         DurationMinutes = f.DurationMinutes,
-                        Cost = f.Cost
+                        Cost = f.Cost,
+                        DelayMinutes = f.DelayMinutes,
+                        DepartureDate = f.DepartureDate,
+                        PlaneModel = new PlaneModel
+                        {
+                            Id = f.Plane.Id,
+                            MaxBaggageWeight = f.Plane.MaxBaggageWeight,
+                            MaxPassengers = f.Plane.MaxPassengers,
+                            Name = f.Plane.Name
+                        }
                     })
                 });
         }
 
         public PlaneModel AddNewPlane(int airlineId, PlaneModel planeModel)
         {
-            this.Entities.AirlinePlanes.Add(new AirlinePlane
+            this.WriteContext.AirlinePlanes.Add(new AirlinePlane
             {
                 AirlineId = airlineId,
                 PlaneId = this.GetOrAddPlane(planeModel),
                 Amount = planeModel.Amount
             });
-            this.Entities.SaveChanges();
+            this.WriteContext.SaveChanges();
 
             return planeModel;
         }
 
         private int GetOrAddPlane(PlaneModel plane)
         {
-            int id = this.Entities.Planes
+            int id = this.WriteContext.Planes
                 .Where(p => p.Id == plane.Id)
                 .Select(p => p.Id)
                 .SingleOrDefault();
@@ -95,8 +92,8 @@ namespace FlightManagement.Repositories
                     Name = plane.Name
                 };
 
-                this.Entities.Planes.Add(tempPlane);
-                this.Entities.SaveChanges();
+                this.WriteContext.Planes.Add(tempPlane);
+                this.WriteContext.SaveChanges();
                 id = tempPlane.Id;
             }
 

@@ -30,5 +30,10 @@ namespace GateManagement.Entities
                 new CheckInCounter { Number = "2", BaggageDropOffPoint = true }
             );
         }
+
+        public void MigrateDb()
+        {
+            Database.Migrate();
+        }
     }
 }

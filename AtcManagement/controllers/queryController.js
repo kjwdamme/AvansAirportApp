@@ -1,9 +1,10 @@
 ATC = require('../models/queryModel');
 var mongoose = require('mongoose');
+const env = require('../config/env');
 
 exports.index = function (req, res) {
-    mongoose.connect('mongodb://Admin:Password123@ds343217.mlab.com:43217/readatc', { useNewUrlParser: true });
-
+    // mongoose.connect('mongodb://Admin:Password123@ds343217.mlab.com:43217/readatc', { useNewUrlParser: true });
+    mongoose.connect(env.env.mongoReadHost, { useNewUrlParser: true });
     db = mongoose.connection;
 
     db.once('open', function callback() {
@@ -25,9 +26,9 @@ exports.index = function (req, res) {
     });
 };
 
-exports.view = function (req, res) {
-    mongoose.connect('mongodb://Admin:Password123@ds343217.mlab.com:43217/readatc', { useNewUrlParser: true });
-
+exports.viewById = function (req, res) {
+    // mongoose.connect('mongodb://Admin:Password123@ds343217.mlab.com:43217/readatc', { useNewUrlParser: true });
+    mongoose.connect(env.env.mongoReadHost);
     db = mongoose.connection;
 
     db.once('open', function callback() {

@@ -13,19 +13,79 @@ services:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
 
-  # invoicingmanagement:
-  #   image: tolgaelbir/invoicingmanagement:latest
-  #   depends_on:
-  #    - rabbitmq
-  #    - waitforrabbit
-  #   build:
-  #     context: .
-  #     dockerfile: /invoicing/Dockerfile
-  #   ports: 
-  #    - "8080"
+  sqldatabase:
+    image: microsoft/mssql-server-linux
+    restart: always
+    volumes: 
+      - datafiles:/var/lib/sqldb
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Atleast8characters!
+
+  sqlgatedatabase:
+    image: microsoft/mssql-server-linux
+    restart: always
+    volumes: 
+      - datafiles:/var/lib/sqldb
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Atleast8characters!
+
+  gatemanagement:
+    image: avansairportapp/gatemanagement
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+      - sqlgatedatabase
+    build:
+      context: .
+      dockerfile: GateManagement/Dockerfile
+    ports:
+      - "6001"
+    restart: always
+    environment: 
+      - DBHOST=sqlgatedatabase
+      - DBPORT=1433
+      - DBUSER=sa
+      - DBPASSWORD=Atleast8characters!
+
+  waitforrabbit:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - rabbitmq
+    command: rabbitmq:5672
+
+  flightmanagement:
+    image: avansairportapp/flightmanagement_1
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+      - sqldatabase
+    build:
+      context: .
+      dockerfile: FlightManagement/Dockerfile
+    ports:
+      - "5001"
+    restart: always
+    environment: 
+      - DBHOST=sqldatabase
+      - DBPORT=1433
+      - DBUSER=sa
+      - DBPASSWORD=Atleast8characters!
+
+  invoicingmanagement:
+    image: avansairport/invoicingmanagement:latest
+    depends_on:
+     - rabbitmq
+     - waitforrabbit
+    build:
+      context: .
+      dockerfile: invoicing/Dockerfile
+    ports: 
+     - "8080"
 
   bookingmanagement:
-    image: tolgaelbir/bookingmanagement:latest
+    image: avansairport/bookingmanagement:latest
     depends_on:
       - rabbitmq
       - waitforrabbit
@@ -35,44 +95,40 @@ services:
     ports:
       - "9090"
 
-  # atcmanagement:
-  #   image: gompermike/atcmanagement:latest
-  #   depends_on:
-  #     - rabbitmq
-  #     - waitforrabbit
-  #   ports:
-  #     - "1010"    
+  atcmanagement:
+    image: avansairport/atcmanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    ports:
+      - "1010"    
 
-  # bordersecuritymanagement:
-  #   image: gompermike/bordersecuritymanagement:latest
-  #   depends_on:
-  #     - rabbitmq
-  #     - waitforrabbit
-  #   ports:
-  #     - "2020"
+  bordersecuritymanagement:
+    image: avansairport/bordersecuritymanagement:latest
+    depends_on:
+      - rabbitmq
+      - waitforrabbit
+    ports:
+      - "2020"
 
   checkinmanagement:
-    image: tolgaelbir/checkinmanagement:latest
+    image: avansairport/checkinmanagement:latest
     depends_on:
       - rabbitmq
       - waitforrabbit
     ports:
       - "3030"
 
-  # securitymanagement:
-  #   image: gompermike/securitymanagement:latest
-  #   depends_on:
-  #     - rabbitmq
-  #     - waitforrabbit
-  #   ports:
-  #     - "4040"
-
-  waitforrabbit:
-    image: dadarek/wait-for-dependencies
+  securitymanagement:
+    image: avansairport/securitymanagement:latest
     depends_on:
       - rabbitmq
-    command: rabbitmq:5672
+      - waitforrabbit
+    ports:
+      - "4040"
 
 volumes:
   rabbitmqdata:
+    external: true
+  datafiles:
     external: true

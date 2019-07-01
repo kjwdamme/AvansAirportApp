@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FlightManagement.Controllers;
+﻿using FlightManagement.Controllers;
 using FlightManagement.Entities;
 using FlightManagement.Repositories;
+using FlightManagement.Scheduler;
 using FlightManagement.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Hosting;
 
 namespace FlightManagement
 {
@@ -32,23 +27,29 @@ namespace FlightManagement
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            string writeConnection = @"Server=(localdb)\mssqllocaldb;Database=FlightWriteDatabase;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<FlightWriteContext>
-                (options => options.UseSqlServer(writeConnection));
+            // string writeConnection = @"Server=(localdb)\mssqllocaldb;Database=FlightWriteDatabase;Trusted_Connection=True;ConnectRetryCount=0";
 
-            string readConnection = @"Server=(localdb)\mssqllocaldb;Database=FlightReadDatabase;Trusted_Connection=True;ConnectRetryCount=0";
+            var host = Configuration["DBHOST"] ?? "sqldatabase";
+            var port = Configuration["DBPORT"] ?? "1433";
+            var user = Configuration["DBUSER"] ?? "sa";
+            var password = Configuration["DBPASSWORD"] ?? "Atleast8characters!";
+
+            services.AddDbContext<FlightWriteContext>
+                (options => options.UseSqlServer($"Server={host},{port};User={user};Password={password};Database=FlightWriteDatabase;Trusted_Connection=False;"));
+
             services.AddDbContext<FlightReadContext>
-                (options => options.UseSqlServer(readConnection));
+                (options => options.UseSqlServer($"Server={host},{port};User={user};Password={password};Database=FlightReadDatabase;Trusted_Connection=False;"));
 
             services.AddHttpClient<FlightController>();
 
             services.AddTransient<AirlineRepository>();
             services.AddTransient<FlightRepository>();
             services.AddTransient<QueueService>();
+            services.AddSingleton<IHostedService, DatabaseSynchronizeTask>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -61,6 +62,13 @@ namespace FlightManagement
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+                        // auto migrate db
+            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                scope.ServiceProvider.GetService<FlightWriteContext>().MigrateDB();
+                scope.ServiceProvider.GetService<FlightReadContext>().MigrateDB();
+            }    
         }
     }
 }

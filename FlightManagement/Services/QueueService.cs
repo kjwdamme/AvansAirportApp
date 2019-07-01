@@ -11,9 +11,9 @@ namespace FlightManagement.Services
 {
     public class QueueService
     {
-        public void SendQueue(string queueName, QueueModel queueModel)
+        public void SendQueue(string queueName, FlightCreatedEvent flightCreatedEvent)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
+            var factory = new ConnectionFactory() { HostName = "rabbitmq" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
@@ -23,7 +23,7 @@ namespace FlightManagement.Services
                                      autoDelete: false,
                                      arguments: null);
 
-                string message = JsonConvert.SerializeObject(queueModel);
+                string message = JsonConvert.SerializeObject(flightCreatedEvent);
                 var body = Encoding.UTF8.GetBytes(message);
 
                 channel.BasicPublish(exchange: "",

@@ -15,5 +15,10 @@ namespace GateManagement.Entities
         public DbSet<FlightCheckInCounter> FlightCheckInCounters { get; set; }
         public DbSet<Gate> Gates { get; set; }
         public DbSet<FlightGate> FlightGates { get; set; }
+
+        public void MigrateDb()
+        {
+            Database.Migrate();
+        }
     }
 }

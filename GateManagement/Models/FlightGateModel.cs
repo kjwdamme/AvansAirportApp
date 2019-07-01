@@ -13,6 +13,6 @@ namespace GateManagement.Models
         public DateTime ClosingTime { get; set; }
 
         public GateModel GateModel { get; set; }
-        public int GateId { get; set; }
+        public string GateNumber { get; set; }
     }
 }

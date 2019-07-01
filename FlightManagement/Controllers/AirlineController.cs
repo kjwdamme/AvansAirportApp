@@ -44,14 +44,8 @@ namespace FlightManagement.Controllers
                     });
             }
         }
-
+        
         [HttpGet]
-        public IActionResult GetAirlines()
-        {
-            return this.Ok(this.Repository.GetAirlines());
-        }
-
-        [HttpGet("flights")]
         public IActionResult GetAirlineFlights()
         {
             return this.Ok(this.Repository.GetAirlineFlightInformation());

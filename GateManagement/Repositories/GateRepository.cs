@@ -3,30 +3,51 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GateManagement.Models;
 
 namespace GateManagement.Repositories
 {
     public class GateRepository
     {
-        public GateRepository(GateWriteContext entities)
+        public GateRepository( GateWriteContext writeContext,  GateReadContext readContext)
         {
-            this.Entities = entities;
+            this.WriteContext = writeContext;
+            this.ReadContext = readContext;
         }
 
-        public GateWriteContext Entities { get; }
+        public GateWriteContext WriteContext { get; }
+
+        public GateReadContext ReadContext { get; }    
 
         public void AssignGate(int flightId, DateTime openingTime, DateTime closingTime)
         {
             Random rand = new Random();
 
-            this.Entities.FlightGates.Add(new FlightGate
+            this.WriteContext.FlightGates.Add(new FlightGate
             {
                 ClosingTime = closingTime,
                 OpeningTime = openingTime,
                 FlightId = flightId,
-                GateNumber = this.Entities.Gates.ToList()[rand.Next(this.Entities.Gates.Count())].Number
+                GateNumber = this.WriteContext.Gates.ToList()[rand.Next(this.WriteContext.Gates.Count())].Number
             });
-            this.Entities.SaveChanges();
+            this.WriteContext.SaveChanges();
+        }
+
+        public IEnumerable<FlightGate> GetFlightGates()
+        {
+//            return this.ReadContext.FlightGates.Select(fg => new FlightGateModel
+//            {
+//                FlightId = fg.FlightId,
+//                GateNumber = fg.GateNumber,
+//                OpeningTime = fg.OpeningTime,
+//                ClosingTime = fg.ClosingTime
+//            });
+            return this.ReadContext.FlightGates;
+        }
+
+        public IEnumerable<FlightCheckInCounter> GetFlightCheckInCounters()
+        {
+            return this.ReadContext.FlightCheckInCounters;
         }
 
         //private List<Gate> GetOpenGates()
