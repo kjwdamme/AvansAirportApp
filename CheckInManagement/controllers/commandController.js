@@ -2,7 +2,7 @@ checkIn = require('../models/commandModel');
 const env = require('../config/env');
 const mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
-
+//test
 exports.new = function (req, res) {
     mongoose.connect(env.env.mongoWritehost, { useNewUrlParser: true })
     var db = mongoose.connection;
