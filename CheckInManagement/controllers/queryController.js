@@ -1,7 +1,7 @@
 checkIn = require('../models/queryModel');
 const mongoose = require('mongoose');
 const env = require('../config/env');
-
+//test
 exports.index = function (req, res) {
     mongoose.connect(env.env.mongoReadHost, { useNewUrlParser: true });
     db = mongoose.connection;
