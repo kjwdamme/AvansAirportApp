@@ -13,7 +13,7 @@ namespace FlightManagement.Services
     {
         public void SendQueue(string queueName, FlightCreatedEvent flightCreatedEvent)
         {
-            var factory = new ConnectionFactory() { HostName = "rabbitmq" };
+            var factory = new ConnectionFactory() { HostName = "localhost" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {

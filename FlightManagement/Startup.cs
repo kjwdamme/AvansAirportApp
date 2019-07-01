@@ -29,7 +29,7 @@ namespace FlightManagement
 
             // string writeConnection = @"Server=(localdb)\mssqllocaldb;Database=FlightWriteDatabase;Trusted_Connection=True;ConnectRetryCount=0";
 
-            var host = Configuration["DBHOST"] ?? "sqldatabase";
+            var host = Configuration["DBHOST"] ?? "localhost";
             var port = Configuration["DBPORT"] ?? "1433";
             var user = Configuration["DBUSER"] ?? "sa";
             var password = Configuration["DBPASSWORD"] ?? "Atleast8characters!";

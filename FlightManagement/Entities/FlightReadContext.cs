@@ -10,10 +10,6 @@ namespace FlightManagement.Entities
     {
         public FlightReadContext(DbContextOptions<FlightReadContext> options) : base(options)
         {
-            Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.AirlinePlanes ON");
-            Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Airlines ON");
-            Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Flights ON");
-            Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Planes ON");
         }
 
         public DbSet<Airline> Airlines { get; set; }

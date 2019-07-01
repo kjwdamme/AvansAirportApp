@@ -15,6 +15,13 @@ namespace FlightManagement.Controllers
 
         public AirlineRepository Repository { get; }
 
+        [HttpDelete]
+        public IActionResult ClearDatabases()
+        {
+            this.Repository.ClearDatabases();
+            return this.Ok();
+        }
+
         [HttpPost]
         public IActionResult CreateAirline([FromBody] AirlineModel airline)
         {

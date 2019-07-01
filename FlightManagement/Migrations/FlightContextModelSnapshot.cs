@@ -113,7 +113,7 @@ namespace FlightManagement.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FlightManagement.Entities.Plane", "Plane")
-                        .WithMany("AirlinePlanes")
+                        .WithMany()
                         .HasForeignKey("PlaneId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

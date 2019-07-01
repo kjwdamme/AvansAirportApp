@@ -24,14 +24,14 @@ namespace FlightManagement.Scheduler
             var writeContext = serviceProvider.GetRequiredService<FlightWriteContext>();
             var readContext = serviceProvider.GetRequiredService<FlightReadContext>();
             
-            readContext.BulkInsertOrUpdate(writeContext.Planes.ToList(), 
-                new BulkConfig { PreserveInsertOrder = true });
             readContext.BulkInsertOrUpdate(writeContext.Airlines.ToList(), 
-                new BulkConfig { PreserveInsertOrder = true });
+                new BulkConfig { PreserveInsertOrder = false });
+            readContext.BulkInsertOrUpdate(writeContext.Planes.ToList(), 
+                new BulkConfig { PreserveInsertOrder = false });
             readContext.BulkInsertOrUpdate(writeContext.Flights.ToList(), 
-                new BulkConfig { PreserveInsertOrder = true });
+                new BulkConfig { PreserveInsertOrder = false });
             readContext.BulkInsertOrUpdate(writeContext.AirlinePlanes.ToList(),
-                new BulkConfig {PreserveInsertOrder = true});
+                new BulkConfig {PreserveInsertOrder = false});
             readContext.SaveChanges();
 
             Console.WriteLine("Finished synchronizing!");

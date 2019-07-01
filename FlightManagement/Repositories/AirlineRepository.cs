@@ -37,6 +37,21 @@ namespace FlightManagement.Repositories
             return null;
         }
 
+        public void ClearDatabases()
+        {
+            this.ReadContext.AirlinePlanes.RemoveRange(this.ReadContext.AirlinePlanes);
+            this.ReadContext.Flights.RemoveRange(this.ReadContext.Flights);
+            this.ReadContext.Planes.RemoveRange(this.ReadContext.Planes);
+            this.ReadContext.Airlines.RemoveRange(this.ReadContext.Airlines);
+            this.ReadContext.SaveChanges();
+
+            this.WriteContext.AirlinePlanes.RemoveRange(this.WriteContext.AirlinePlanes);
+            this.WriteContext.Flights.RemoveRange(this.WriteContext.Flights);
+            this.WriteContext.Planes.RemoveRange(this.WriteContext.Planes);
+            this.WriteContext.Airlines.RemoveRange(this.WriteContext.Airlines);
+            this.WriteContext.SaveChanges();
+        }
+
         public IEnumerable<AirlineModel> GetAirlineFlightInformation()
         {
             return this.ReadContext.Airlines

@@ -4,14 +4,16 @@ using FlightManagement.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace FlightManagement.Migrations.FlightRead
+namespace FlightManagement.Migrations
 {
-    [DbContext(typeof(FlightReadContext))]
-    partial class FlightReadContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(FlightWriteContext))]
+    [Migration("20190701150423_KeysFix")]
+    partial class KeysFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
