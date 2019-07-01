@@ -9,14 +9,12 @@ namespace FlightManagement.Repositories
 {
     public class FlightRepository
     {
-        public FlightRepository(FlightWriteContext writeContext, FlightReadContext readContext)
+        public FlightRepository(FlightWriteContext writeContext)
         {
             this.WriteContext = writeContext;
-            this.ReadContext = readContext;
         }
 
         public FlightWriteContext WriteContext { get; }
-        public FlightReadContext ReadContext { get; }
 
         public FlightModel AddFlight(int airlineId, FlightModel flightModel)
         {
@@ -48,7 +46,7 @@ namespace FlightManagement.Repositories
 
         public FlightModel GetFlight(int flightId)
         {
-            return this.ReadContext.Flights
+            return this.WriteContext.Flights
                 .Where(f => f.FlightId == flightId)
                 .Select(flight => new FlightModel()
                 {

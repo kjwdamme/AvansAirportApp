@@ -10,7 +10,6 @@ namespace FlightManagement.Entities
     public class Flight
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int FlightId { get; set; }
         [Required]
         public DateTime DepartureDate { get; set; }

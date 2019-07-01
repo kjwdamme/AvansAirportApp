@@ -9,15 +9,12 @@ namespace FlightManagement.Repositories
 {
     public class AirlineRepository
     {
-        public AirlineRepository(FlightWriteContext writeContext, FlightReadContext readContext)
+        public AirlineRepository(FlightWriteContext writeContext)
         {
             this.WriteContext = writeContext;
-            this.ReadContext = readContext;
         }
 
         public FlightWriteContext WriteContext { get; }
-
-        public FlightReadContext ReadContext { get; }
 
         public AirlineModel AddAirline(AirlineModel airline)
         {
@@ -39,12 +36,6 @@ namespace FlightManagement.Repositories
 
         public void ClearDatabases()
         {
-            this.ReadContext.AirlinePlanes.RemoveRange(this.ReadContext.AirlinePlanes);
-            this.ReadContext.Flights.RemoveRange(this.ReadContext.Flights);
-            this.ReadContext.Planes.RemoveRange(this.ReadContext.Planes);
-            this.ReadContext.Airlines.RemoveRange(this.ReadContext.Airlines);
-            this.ReadContext.SaveChanges();
-
             this.WriteContext.AirlinePlanes.RemoveRange(this.WriteContext.AirlinePlanes);
             this.WriteContext.Flights.RemoveRange(this.WriteContext.Flights);
             this.WriteContext.Planes.RemoveRange(this.WriteContext.Planes);
@@ -54,7 +45,7 @@ namespace FlightManagement.Repositories
 
         public IEnumerable<AirlineModel> GetAirlineFlightInformation()
         {
-            return this.ReadContext.Airlines
+            return this.WriteContext.Airlines
                 .Select(a => new AirlineModel
                 {
                     Id = a.Id,
@@ -94,7 +85,7 @@ namespace FlightManagement.Repositories
         private int GetOrAddPlane(PlaneModel plane)
         {
             int id = this.WriteContext.Planes
-                .Where(p => p.Id == plane.Id)
+                .Where(p => p.Name == plane.Name)
                 .Select(p => p.Id)
                 .SingleOrDefault();
 

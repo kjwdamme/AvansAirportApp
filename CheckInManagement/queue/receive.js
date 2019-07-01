@@ -37,39 +37,47 @@ module.exports = {
                             var booking = JSON.parse(msg.content.toString());
 
                             db.once('open', function callback() {
-                                var checkin = new checkIn()
+                                flightId = booking.flightID
+                                console.log("this is the flight id: " + flightId)
+                                axios.get('http://flightmanagement/api/flights/{flightId}')
+                                    .then(response => {
+                                        var checkin = new checkIn()
 
-                                checkin._id = booking._id;
-                                checkin.passenger = booking.passenger;
-                                checkin.email = booking.email;
-                                checkin.flight = [{
-                                    PlaneId: 5,
-                                    AirlineId: 5,
-                                    DepartureDate: "01-01-2019",
-                                    Delay: 5,
-                                    Destination: "Turkey",
-                                    IsArriving: false
-                                }],
-                                checkin.checkedIn = false
+                                        checkin._id = booking._id;
+                                        checkin.passenger = booking.passenger;
+                                        checkin.email = booking.email;
+                                        checkin.flight = [{
+                                            PlaneName: response.planeName,
+                                            PlaneId: response.planeModel.planeId,
+                                            AirlineId: response.airlineModel.airlineId,
+                                            DepartureDate: response.departureDate,
+                                            Delay: response.delayMinutes,
+                                            Destination: response.destination
+                                        }],
 
-                                console.log(checkin);
+                                            console.log(checkin);
 
-                                checkin.save(function (err) {
-                                    if(err) return console.error(err);
+                                        checkin.save(function (err) {
+                                            if (err) return console.error(err);
 
-                                    // commandController.sendInvoice(invoice);
+                                            commandController.sendCheckInNotice(checkin);
 
-                                    mongoose.connection.close();
-                                    mongoose.disconnect();
+                                            mongoose.connection.close();
+                                            mongoose.disconnect();
 
-                                    var secs = msg.content.toString().split('.').length - 1;
+                                            var secs = msg.content.toString().split('.').length - 1;
 
-                                    setTimeout(function () {
-                                        console.log(" [x] Done");
-                                        channel.ack(msg);
-                                    }, secs * 1000);
+                                            setTimeout(function () {
+                                                console.log(" [x] Done");
+                                                channel.ack(msg);
+                                            }, secs * 1000);
 
-                                });
+                                        });
+
+                                    })
+                                    .catch(error => {
+                                        console.log(error);
+                                    });
                             });
                         }
                     }, {
@@ -77,6 +85,6 @@ module.exports = {
                         });
                 });
             });
-        }); 
+        });
     }
 }

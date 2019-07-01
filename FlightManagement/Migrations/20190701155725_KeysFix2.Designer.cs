@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace FlightManagement.Migrations.FlightRead
+namespace FlightManagement.Migrations
 {
-    [DbContext(typeof(FlightReadContext))]
-    [Migration("20190626121054_RemovedArriving")]
-    partial class RemovedArriving
+    [DbContext(typeof(FlightWriteContext))]
+    [Migration("20190701155725_KeysFix2")]
+    partial class KeysFix2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -115,7 +115,7 @@ namespace FlightManagement.Migrations.FlightRead
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FlightManagement.Entities.Plane", "Plane")
-                        .WithMany("AirlinePlanes")
+                        .WithMany()
                         .HasForeignKey("PlaneId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

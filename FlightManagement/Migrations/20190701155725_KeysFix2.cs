@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace FlightManagement.Migrations.FlightRead
+namespace FlightManagement.Migrations
 {
-    public partial class KeysFix : Migration
+    public partial class KeysFix2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

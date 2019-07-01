@@ -10,7 +10,6 @@ namespace FlightManagement.Entities
     public class AirlinePlane
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AirlinePlaneId { get; set; }
 
         [Required]
