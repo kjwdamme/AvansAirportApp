@@ -16,7 +16,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "amqplib": "^0.5.3",
-    "body-parser": "1.19.0",
+    "body-parser": "1.20.1",
     "bson-ext": "2.0.2",
     "mongodb": "3.2.7",
     "kerberos": "^1.1.2",
